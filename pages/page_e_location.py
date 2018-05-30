@@ -39,7 +39,7 @@ ar_order = {
 
 ar_add_order = {
     u'到货时间': {
-        'input_data': (By.ID, 'Estimatedtime'),
+        'input_date': (By.ID, 'Estimatedtime'),
         'box': (By.ID, 'laydate_box'),
         'today': (By.ID, 'laydate_today')
               },
