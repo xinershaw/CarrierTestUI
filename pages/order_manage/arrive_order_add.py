@@ -11,6 +11,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from pages import page_e_location as loc
 from pages import get_data_DB as db
 import datetime
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class ArOrderAdd(BasePage):
@@ -20,9 +21,8 @@ class ArOrderAdd(BasePage):
         self.login()  # 登录
         self.find_element(*(loc.navbar_left[u'运单'][u'父菜单'])).click()  # 展开运单管理菜单
         self.find_element(*(loc.navbar_left[u'运单'][u'到货分理'])).click()  # 打开到货分理列表页面
-        # 点击到货分理选项卡
-        self.find_element(*(By.XPATH, "//a[contains(@data-id,'/Manager/ArriveOrder/Index')]")).click()
-        self.switch_frame('iframe4')  # 切换到到货分理frame
+        # 切换到到货分理frame
+        WebDriverWait(self.driver, 10).until(EC.frame_to_be_available_and_switch_to_it(self.find_element(*(By.NAME, 'iframe4'))))
         self.find_element(*(loc.ar_order[u'新增'])).click()  # 点击新增到货分理按钮
 
     def input_arrive_date(self):
@@ -45,7 +45,7 @@ class ArOrderAdd(BasePage):
         if old_code:
             return old_code + 1
         else:
-            return int(pre_code) + 1
+            return pre_code + '0001'
 
 
 
