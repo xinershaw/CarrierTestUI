@@ -12,7 +12,7 @@ login = {
     u'提交': (By.ID, 'btnLogin')
 }
 
-navbar_left ={
+navbar ={
     u'订单': (By.LINK_TEXT, u'订单'),
     u'派单': (By.LINK_TEXT,  u'派单'),
     u'运单':{
@@ -33,10 +33,18 @@ navbar_left ={
     u'基础信息管理': (By.LINK_TEXT, u'基础信息管理'),
 }
 
+# 到货分理
 ar_order = {
-    u'新增': (By.XPATH, "//*[@id='searchForm']/div[12]/a")
+    u'首页': (By.ID, 'firstPage'),  # 首页选项卡
+    u'到货分理': (By.XPATH, "//a[contains(@data-id,'/ArriveOrder/Index')]"),  # 到货分理选项卡
+    'frame': (By.NAME, 'iframe4'),
+    # u'新增': (By.XPATH, "//*[@id='searchForm']/div[12]/a"),
+    u'新增': (By.LINK_TEXT, u'新增到货分理'),
+    u'导出': (By.ID, 'btnExport'),
+    u'搜索': (By.ID, 'btnSearch')
 }
 
+# 新增到货分理
 ar_add_order = {
     u'到货时间': {
         'input_date': (By.ID, 'Estimatedtime'),

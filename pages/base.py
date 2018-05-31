@@ -52,13 +52,16 @@ class BasePage(object):
 
     def find_elements(self, *loc):
         try:
-            WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(loc))
+            WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located(loc))
             return self.driver.find_elements(*loc)
         except NoSuchE as e:
             print u"页面中未找到这些元素", e
 
-    def switch_frame(self, keyword):
-        return self.driver.switch_to.frame(keyword)
+    def to_frame(self, *loc):
+        try:
+            WebDriverWait(self.driver, 10).until(EC.frame_to_be_available_and_switch_to_it(self.find_element(*loc)))
+        except NoSuchE as e:
+            print u"切换到此frame失败！", e
 
     def send_keys(self, loc, value, clear_first=True, click_first=True):
         try:
@@ -70,4 +73,17 @@ class BasePage(object):
                 self.find_element(*loc).send_keys(value)
         except NoSuchE as e:
             print u"%s 页面中未找到元素", e
+
+    def click(self, loc):
+        try:
+            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(loc)).click()
+        except NoSuchE as e:
+            print u'点击该元素失败', e
+
+    def is_visible(self, loc):
+        try:
+            # self.driver.implicitly_wait(30)
+            WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(loc))
+        except Exception as e:
+            print u'尚未定位到该元素！', e
 
