@@ -9,6 +9,7 @@ import unittest
 from pages.order_manage import arrive_order_add as ar_add
 from pages.base import BasePage as b
 from pages import page_e_location as loc
+from testcase import test_data as td
 
 
 class CaseDraft(unittest.TestCase):
@@ -19,9 +20,9 @@ class CaseDraft(unittest.TestCase):
     def test_draft(self):
         # 运费计算
         page = ar_add.ArOrderAdd(self.driver)
-        page.open_page_add()
-        page.input_arrive_date()
-        # page.input_order_code()
+        page.just_do_it(**td.ar_add_order1)
+        # s = td.ar_add_order1[u'重量']
+        # print type(s), eval(s)
 
     def tearDown(self):
         self.driver.quit()
