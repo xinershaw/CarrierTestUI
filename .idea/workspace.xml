@@ -29,11 +29,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="draft_web.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="draft_web.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/draft_web.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="481">
-              <caret line="26" selection-start-line="26" selection-end-line="26" />
+            <state relative-caret-position="458">
+              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
               <folding>
                 <element signature="e#77#107#0" expanded="true" />
               </folding>
@@ -44,8 +44,8 @@
       <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="665">
-              <caret line="85" column="12" selection-start-line="85" selection-start-column="12" selection-end-line="85" selection-end-column="12" />
+            <state relative-caret-position="206">
+              <caret line="78" column="41" selection-start-line="78" selection-start-column="41" selection-end-line="78" selection-end-column="41" />
               <folding>
                 <element signature="e#77#134#0" expanded="true" />
               </folding>
@@ -53,11 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="arrive_order_add.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="arrive_order_add.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/order_manage/arrive_order_add.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="31" column="39" lean-forward="true" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
+            <state relative-caret-position="290">
+              <caret line="35" column="59" lean-forward="true" selection-start-line="35" selection-start-column="59" selection-end-line="35" selection-end-column="59" />
               <folding>
                 <element signature="e#83#126#0" expanded="true" />
               </folding>
@@ -68,8 +68,8 @@
       <file leaf-file-name="page_e_location.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/page_e_location.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="43" column="31" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
+            <state relative-caret-position="418">
+              <caret line="46" column="37" selection-start-line="46" selection-start-column="37" selection-end-line="46" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -105,8 +105,8 @@
         <option value="$PROJECT_DIR$/testcase/test_data.py" />
         <option value="$PROJECT_DIR$/pages/get_data_DB.py" />
         <option value="$PROJECT_DIR$/draft_web.py" />
-        <option value="$PROJECT_DIR$/pages/base.py" />
         <option value="$PROJECT_DIR$/pages/page_e_location.py" />
+        <option value="$PROJECT_DIR$/pages/base.py" />
         <option value="$PROJECT_DIR$/pages/order_manage/arrive_order_add.py" />
       </list>
     </option>
@@ -214,7 +214,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527736141818</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="运单号自动生成流水号---ok;&#10;到货分理页，新增到货分理按钮的显示等待无效果（未完待续）">
+      <created>1527758384822</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1527758384822</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView">
@@ -232,14 +239,14 @@
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2497349" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32997763" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.17338282" side_tool="true" visible="true" weight="0.3538634" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.17444326" side_tool="true" visible="true" weight="0.3538634" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32922733" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32922733" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49893954" weight="0.32922733" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49840933" weight="0.32922733" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32997763" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.8266172" visible="true" weight="0.3538634" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.82555676" visible="true" weight="0.3538634" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -255,17 +262,65 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="新增运单号（还有问题，下一个版本继续）" />
     <MESSAGE value="fix:打开到货分理列表页后，定位进入相应的frame" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix:打开到货分理列表页后，定位进入相应的frame" />
+    <MESSAGE value="运单号自动生成流水号---ok;&#10;到货分理页，新增到货分理按钮的显示等待无效果（未完待续）" />
+    <option name="LAST_COMMIT_MESSAGE" value="运单号自动生成流水号---ok;&#10;到货分理页，新增到货分理按钮的显示等待无效果（未完待续）" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="61" />
+      <option name="time" value="67" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/run_test_cases.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+          <folding>
+            <element signature="e#77#92#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/draft_web.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+          <folding>
+            <element signature="e#77#107#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1840">
+          <caret line="85" column="12" selection-start-line="85" selection-start-column="12" selection-end-line="85" selection-end-column="12" />
+          <folding>
+            <element signature="e#77#134#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/page_e_location.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="989">
+          <caret line="43" column="31" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/order_manage/arrive_order_add.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+          <folding>
+            <element signature="e#83#126#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/run_test_cases.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="506">
@@ -608,39 +663,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/draft_web.py">
+    <entry file="file://$PROJECT_DIR$/pages/page_e_location.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-          <folding>
-            <element signature="e#77#107#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="418">
+          <caret line="46" column="37" selection-start-line="46" selection-start-column="37" selection-end-line="46" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Python27/Lib/httplib.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="409" selection-start-line="409" selection-end-line="409" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="665">
-          <caret line="85" column="12" selection-start-line="85" selection-start-column="12" selection-end-line="85" selection-end-column="12" />
+        <state relative-caret-position="206">
+          <caret line="78" column="41" selection-start-line="78" selection-start-column="41" selection-end-line="78" selection-end-column="41" />
           <folding>
             <element signature="e#77#134#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/page_e_location.py">
+    <entry file="file://$PROJECT_DIR$/pages/order_manage/arrive_order_add.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="43" column="31" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
+        <state relative-caret-position="290">
+          <caret line="35" column="59" lean-forward="true" selection-start-line="35" selection-start-column="59" selection-end-line="35" selection-end-column="59" />
+          <folding>
+            <element signature="e#83#126#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/order_manage/arrive_order_add.py">
+    <entry file="file://$PROJECT_DIR$/draft_web.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="31" column="39" lean-forward="true" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
+        <state relative-caret-position="458">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
           <folding>
-            <element signature="e#83#126#0" expanded="true" />
+            <element signature="e#77#107#0" expanded="true" />
           </folding>
         </state>
       </provider>

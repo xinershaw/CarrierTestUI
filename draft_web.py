@@ -21,7 +21,7 @@ class CaseDraft(unittest.TestCase):
         page = ar_add.ArOrderAdd(self.driver)
         page.open_page_add()
         page.input_arrive_date()
-        print(page.input_order_code())
+        # page.input_order_code()
 
     def tearDown(self):
         self.driver.quit()

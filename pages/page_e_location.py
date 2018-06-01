@@ -41,7 +41,11 @@ ar_order = {
     # u'新增': (By.XPATH, "//*[@id='searchForm']/div[12]/a"),
     u'新增': (By.LINK_TEXT, u'新增到货分理'),
     u'导出': (By.ID, 'btnExport'),
-    u'搜索': (By.ID, 'btnSearch')
+    u'搜索': (By.ID, 'btnSearch'),
+    u'查询条件':{
+        u'订单号': (By.ID, 'TransitOrderCode'),
+        u'原票号': (By.ID, 'OldBillNum')
+    }
 }
 
 # 新增到货分理

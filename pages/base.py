@@ -83,7 +83,7 @@ class BasePage(object):
     def is_visible(self, loc):
         try:
             # self.driver.implicitly_wait(30)
-            WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(loc))
+            return WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(loc))
         except Exception as e:
             print u'尚未定位到该元素！', e
 
