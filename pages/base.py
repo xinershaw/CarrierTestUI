@@ -8,7 +8,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException as NoSuchE
 from selenium.webdriver.common.by import By
-from pages import page_e_location as loc
+from pages import page_e_location as loctor
 from testcase import test_data as td
 
 
@@ -31,9 +31,9 @@ class BasePage(object):
     def login(self):
         username = td.login[u'用户名']
         password = td.login[u'密码']
-        username_loc = loc.login[u'用户名']
-        password_loc = loc.login[u'密码']
-        submit_loc = loc.login[u'提交']
+        username_loc = loctor.login[u'用户名']
+        password_loc = loctor.login[u'密码']
+        submit_loc = loctor.login[u'提交']
         self.open()
 
         try:
@@ -63,14 +63,13 @@ class BasePage(object):
         except NoSuchE as e:
             print u"切换到此frame失败！", e
 
-    def send_keys(self, loc, value, clear_first=True, click_first=True):
+    def send_keys(self, value, *loc):
+        # clear_first = True, click_first = True
         try:
-            loc = getattr(self, "_%s" % loc)
-            if click_first:
-                self.find_element(*loc).click()
-            if clear_first:
-                self.find_element(*loc).clear()
-                self.find_element(*loc).send_keys(value)
+            # loc = getattr(self, "_%s" % loc)
+            self.find_element(*loc).click()
+            self.find_element(*loc).clear()
+            self.find_element(*loc).send_keys(value)
         except NoSuchE as e:
             print u"%s 页面中未找到元素", e
 
