@@ -11,7 +11,6 @@ import datetime
 import time
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.common.action_chains import ActionChains as AC
-from selenium.webdriver.common.keys import Keys
 
 
 class ArOrderAdd(BasePage):
@@ -66,36 +65,37 @@ class ArOrderAdd(BasePage):
         key_word = {'input': loc.ar_add_order[u'货物名称'], 'item': loc.ar_add_order[u'货物列表1']}
         self.input_group(goods_name, **key_word)
 
-    def input_handing_price(self, d, l):
+    def input_handing_price(self, s, d):  # 两个到站装卸费，由于页面JS有特殊处理，所以脚本需要单独处理，否则只能录入为0
         action = AC(self.driver)
-        item = self.find_element(*l)
-        action.move_to_element(item).\
-            key_down(Keys.BACKSPACE).key_up(Keys.BACKSPACE).\
-            key_down(Keys.BACKSPACE).key_up(Keys.BACKSPACE).\
-            key_down(Keys.BACKSPACE).key_up(Keys.BACKSPACE).\
-            key_down(Keys.BACKSPACE).key_up(Keys.BACKSPACE).\
-            send_keys_to_element(item, d).perform()
+        if s:
+            time.sleep(1)
+            action.move_to_element(self.find_element(*(loc.ar_add_order[u'装卸费铁']))).click().perform()
+            js = "document.getElementById('EndReceiverHandingPrice').value =" + str(d)
+            self.driver.execute_script(js)
+        else:
+            time.sleep(1)
+            action.move_to_element(self.find_element(*(loc.ar_add_order[u'装卸费收']))).click().perform()
+            js = "document.getElementById('HandingPrice').value = " + str(d)
+            self.driver.execute_script(js)
 
-    def input_all(self, **all_items):
+    def input_all(self, **all_items):  # 录入所有必填项
         self.select_value(all_items[u'运输方式'], *(loc.ar_add_order[u'运输方式']))
         self.select_value(all_items[u'服务方式'], *(loc.ar_add_order[u'服务方式']))
         self.select_value(all_items[u'支付方式'], *(loc.ar_add_order[u'支付方式']))
         self.input_s_station(all_items[u'发站'])
         self.input_e_station(all_items[u'到站'])
-        self.find_element(*(loc.ar_add_order[u'发货人'])).send_keys(all_items[u'发货人'])
-        self.find_element(*(loc.ar_add_order[u'收货人'])).send_keys(all_items[u'收货人'])
-        self.find_element(*(loc.ar_add_order[u'发货人手机号'])).send_keys(all_items[u'发货人手机号'])
-        self.find_element(*(loc.ar_add_order[u'收货人手机号'])).send_keys(all_items[u'收货人手机号'])
+        self.send_keys(all_items[u'发货人'], *(loc.ar_add_order[u'发货人']))
+        self.send_keys(all_items[u'收货人'], *(loc.ar_add_order[u'收货人']))
+        self.send_keys(all_items[u'发货人手机号'], *(loc.ar_add_order[u'发货人手机号']))
+        self.send_keys(all_items[u'收货人手机号'], *(loc.ar_add_order[u'收货人手机号']))
         self.input_g_name(all_items[u'货物名称'])
         self.find_element(*(loc.ar_add_order[u'货物包装'])).send_keys(all_items[u'货物包装'])
         self.find_element(*(loc.ar_add_order[u'件数'])).send_keys(all_items[u'件数'])
         self.send_keys(all_items[u'重量'], *(loc.ar_add_order[u'重量']))
         self.send_keys(all_items[u'体积'], *(loc.ar_add_order[u'体积']))
-        # self.find_element(*(loc.ar_add_order[u'其他费'])).send_keys(all_items[u'其他费'])
-        self.input_handing_price(all_items[u'装卸费铁'], loc.ar_add_order[u'装卸费铁'])
-        self.input_handing_price(all_items[u'装卸费收'], loc.ar_add_order[u'装卸费收'])
-        time.sleep(3)
-
+        self.find_element(*(loc.ar_add_order[u'其他费'])).send_keys(all_items[u'其他费'])
+        self.input_handing_price(1, all_items[u'装卸费铁'])
+        self.input_handing_price(0, all_items[u'装卸费收'])
 
     def just_do_it(self, **all_items):
         self.open_page_add()
@@ -103,6 +103,7 @@ class ArOrderAdd(BasePage):
         self.write_order_code()
         self.input_all(**all_items)
         self.click(loc.ar_add_order[u'保存并提交'])
+
 
 
 
