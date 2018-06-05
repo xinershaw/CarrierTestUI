@@ -7,9 +7,8 @@ Project:......
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException as NoSuchE
-from selenium.webdriver.common.by import By
-from pages import page_e_location as loctor
-from testcase import test_data as td
+from pages.element_location import loc_base as locator
+from test_data import td_login as td
 
 
 class BasePage(object):
@@ -31,11 +30,10 @@ class BasePage(object):
     def login(self):
         username = td.login[u'用户名']
         password = td.login[u'密码']
-        username_loc = loctor.login[u'用户名']
-        password_loc = loctor.login[u'密码']
-        submit_loc = loctor.login[u'提交']
+        username_loc = locator.login[u'用户名']
+        password_loc = locator.login[u'密码']
+        submit_loc = locator.login[u'提交']
         self.open()
-
         try:
             self.find_element(*username_loc).send_keys(username)
             self.find_element(*password_loc).send_keys(password)
@@ -86,3 +84,19 @@ class BasePage(object):
         except Exception as e:
             print u'尚未定位到该元素！', e
 
+    def open_the_menu(self, parent, node=''):
+        try:
+            if not node:
+                self.find_element(*(locator.menu[parent])).click()
+            else:
+                self.find_element(*(locator.menu[parent][u'父菜单'])).click()  # 展开父菜单
+                self.find_element(*(locator.menu[parent][node])).click()  # 打开子菜单
+        except Exception as e:
+            print u'打开菜单失败！', e
+
+    def get_tab_name(self, tab):
+        return self.find_element(*locator.tab[tab][tab]).text
+
+    def close_tab(self, tab):
+        # self.find_element(*locator.tab[tab]['exit']).click()
+        self.click(locator.tab[tab]['exit'])

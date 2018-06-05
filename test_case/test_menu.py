@@ -1,25 +1,23 @@
 # coding=utf-8
 """
-Created on 2018年5月29日
+Created on 2018年5月15日
 @author: Xiaoxin
 Project:......
 """
-from selenium import webdriver
 import unittest
-from pages.order_manage import arrive_order_add as ar_add
-from test_data import td_arrive_order as td
+from selenium import webdriver
+from pages import base
 from pages.element_location import loc_base as loc
-from pages import base as Base
 import time
 
 
-class CaseDraft(unittest.TestCase):
+class CaseMenu(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(3)
 
-    def test_draft(self):
-        page = Base.BasePage(self.driver)
+    def test_open_menus(self):  # 新增到货分理-冒烟测试
+        page = base.BasePage(self.driver)
         page.login()
         menus = loc.menu
         for parent in menus:
@@ -35,7 +33,7 @@ class CaseDraft(unittest.TestCase):
                         try:
                             self.assertEqual(menu, tab_name)
                         except AssertionError as e:
-                            print e
+                            print menu, u'打开此菜单测试不通过！', e
             else:
                 print parent
                 page.open_the_menu(parent)
@@ -45,7 +43,7 @@ class CaseDraft(unittest.TestCase):
                 try:
                     self.assertEqual(parent, tab_name)
                 except AssertionError as e:
-                    print e
+                    print parent, u'打开此菜单测试不通过！', e
 
     def tearDown(self):
         self.driver.quit()

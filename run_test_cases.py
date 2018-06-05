@@ -9,7 +9,7 @@ import HTMLTestRunner
 import datetime
 import os
 
-case_path = os.path.join(os.getcwd(), "testcase")  # 存放测试用例的路径
+case_path = os.path.join(os.getcwd(), "test_case")  # 存放测试用例的路径
 
 # 存放测试报告的文件夹
 report_path = os.path.join(os.getcwd(), "test_report")

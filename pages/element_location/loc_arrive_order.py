@@ -6,34 +6,8 @@ Project:......
 """
 from selenium.webdriver.common.by import By
 
-login = {
-    u'用户名': (By.ID, 'Account'),
-    u'密码': (By.ID, 'Password'),
-    u'提交': (By.ID, 'btnLogin')
-}
 
-navbar ={
-    u'订单': (By.LINK_TEXT, u'订单'),
-    u'派单': (By.LINK_TEXT,  u'派单'),
-    u'运单':{
-        u'父菜单': (By.LINK_TEXT, u'运单'),
-        u'到货分理': (By.LINK_TEXT, u'到货分理'),
-        u'运单管理': (By.LINK_TEXT, u'运单管理'),
-        u'入库': (By.LINK_TEXT, u'入库'),
-        u'装车': (By.LINK_TEXT, u'装车'),
-        u'到货': (By.LINK_TEXT, u'到货'),
-        u'送货': (By.LINK_TEXT, u'送货'),
-        u'签收': (By.LINK_TEXT, '签收'),
-        u'回单': (By.LINK_TEXT, '回单')
-    },
-    u'财务管理': (By.LINK_TEXT, u'财务管理'),
-    u'异常及理赔': (By.LINK_TEXT, u'异常及理赔'),
-    u'客户管理': (By.LINK_TEXT, u'客户管理'),
-    u'运力管理': (By.LINK_TEXT, u'运力管理'),
-    u'基础信息管理': (By.LINK_TEXT, u'基础信息管理'),
-}
-
-# 到货分理
+# 到货分理列表
 ar_order = {
     u'首页': (By.ID, 'firstPage'),  # 首页选项卡
     u'到货分理': (By.XPATH, "//a[contains(@data-id,'/ArriveOrder/Index')]"),  # 到货分理选项卡
@@ -45,7 +19,13 @@ ar_order = {
     u'查询条件':{
         u'订单号': (By.ID, 'TransitOrderCode'),
         u'原票号': (By.ID, 'OldBillNum')
-    }
+    },
+    u'列表': {
+        u'整体': (By.ID, 'tablelist'),
+        u'运单号1行': (By.XPATH, "//*[@id='tablelist']/div[2]/div[1]/table/tbody/tr[1]/td[3]/span")
+    },
+    # u'': (),
+    # u'': (),
 }
 
 # 新增到货分理
