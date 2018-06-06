@@ -30,22 +30,23 @@ class CaseDraft(unittest.TestCase):
                     if menu != u'父菜单':
                         page.open_the_menu(parent, menu)
                         time.sleep(1)
-                        tab_name = page.get_tab_name(menu)
+                        tab_name = page.is_visible(loc.tab[menu][menu])
+                        print tab_name
                         page.close_tab(menu)
-                        try:
-                            self.assertEqual(menu, tab_name)
-                        except AssertionError as e:
-                            print e
-            else:
-                print parent
-                page.open_the_menu(parent)
-                time.sleep(1)
-                tab_name = page.get_tab_name(parent)
-                page.close_tab(parent)
-                try:
-                    self.assertEqual(parent, tab_name)
-                except AssertionError as e:
-                    print e
+                        # try:
+                        #     self.assertEqual(menu, tab_name)
+                        # except AssertionError as e:
+                        #     print e
+            # else:
+            #     print parent
+            #     page.open_the_menu(parent)
+            #     time.sleep(1)
+            #     tab_name = page.get_tab_name(parent)
+            #     page.close_tab(parent)
+            #     try:
+            #         self.assertEqual(parent, tab_name)
+            #     except AssertionError as e:
+            #         print e
 
     def tearDown(self):
         self.driver.quit()

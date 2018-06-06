@@ -13,41 +13,41 @@ login = {
 }
 
 menu = {
-    u'订单': {
-        u'父菜单': (By.LINK_TEXT, u'订单'),
-        u'订单管理': (By.LINK_TEXT, u'订单管理'),
-        u'收货派车': (By.LINK_TEXT, u'收货派车')
-    },
-    u'派单': (By.LINK_TEXT,  u'派单'),
+    # u'订单': {
+    #     u'父菜单': (By.LINK_TEXT, u'订单'),
+    #     u'订单管理': (By.LINK_TEXT, u'订单管理'),
+    #     u'收货派车': (By.LINK_TEXT, u'收货派车')
+    # },
+    # u'派单': (By.LINK_TEXT,  u'派单'),
     u'运单':{
         u'父菜单': (By.LINK_TEXT, u'运单'),
         u'到货分理': (By.LINK_TEXT, u'到货分理'),
-        u'运单管理': (By.LINK_TEXT, u'运单管理'),
-        u'入库': (By.LINK_TEXT, u'入库'),
-        u'装车': (By.LINK_TEXT, u'装车'),
-        u'到货': (By.LINK_TEXT, u'到货'),
-        u'送货': (By.LINK_TEXT, u'送货'),
-        u'签收': (By.LINK_TEXT, u'签收'),
-        u'回单': (By.LINK_TEXT, u'回单')
+        # u'运单管理': (By.LINK_TEXT, u'运单管理'),
+        # u'入库': (By.LINK_TEXT, u'入库'),
+        # u'装车': (By.LINK_TEXT, u'装车'),
+        # u'到货': (By.LINK_TEXT, u'到货'),
+        # u'送货': (By.LINK_TEXT, u'送货'),
+        # u'签收': (By.LINK_TEXT, u'签收'),
+        # u'回单': (By.LINK_TEXT, u'回单')
     },
-    u'财务管理': {
-        u'父菜单': (By.LINK_TEXT, u'财务管理'),
-        u'冲红': (By.LINK_TEXT, u'冲红'),
-        u'到账确认查询': (By.LINK_TEXT, u'到账确认查询'),
-        u'支付审核列表': (By.LINK_TEXT, u'支付审核列表  '),
-        u'支付确认列表': (By.LINK_TEXT, u'支付确认列表'),
-        u'收款': (By.LINK_TEXT, u'收款'),
-        u'预付款管理': (By.LINK_TEXT, u'预付款管理'),
-    },
-    u'异常及理赔': {
-        u'父菜单': (By.LINK_TEXT, u'异常及理赔'),
-        u'理赔处理': (By.LINK_TEXT, u'理赔处理'),
-        u'服务异常': (By.LINK_TEXT, u'服务异常'),
-    },
-    u'客户管理': (By.XPATH, "//a[@title='客户管理']/span"),
-    u'运力管理': (By.LINK_TEXT, u'运力管理'),
-    u'基础信息管理': (By.LINK_TEXT, u'基础信息管理'),
-}
+#     u'财务管理': {
+    # #         u'父菜单': (By.LINK_TEXT, u'财务管理'),
+    # #         u'冲红': (By.LINK_TEXT, u'冲红'),
+    # #         u'到账确认查询': (By.LINK_TEXT, u'到账确认查询'),
+    # #         u'支付审核列表': (By.LINK_TEXT, u'支付审核列表  '),
+    # #         u'支付确认列表': (By.LINK_TEXT, u'支付确认列表'),
+    # #         u'收款': (By.LINK_TEXT, u'收款'),
+    # #         u'预付款管理': (By.LINK_TEXT, u'预付款管理'),
+    # #     },
+    # #     u'异常及理赔': {
+    # #         u'父菜单': (By.LINK_TEXT, u'异常及理赔'),
+    # #         u'理赔处理': (By.LINK_TEXT, u'理赔处理'),
+    # #         u'服务异常': (By.LINK_TEXT, u'服务异常'),
+    # #     },
+    # #     u'客户管理': (By.XPATH, "//a[@title='客户管理']/span"),
+    # #     u'运力管理': (By.LINK_TEXT, u'运力管理'),
+    # #     u'基础信息管理': (By.LINK_TEXT, u'基础信息管理'),
+    }
 
 tab = {
     u'首页': (By.ID, 'firstPage'),  # 首页选项卡

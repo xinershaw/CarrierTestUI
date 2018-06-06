@@ -24,7 +24,6 @@ class CaseMenu(unittest.TestCase):
             # 如果是dict，说明有子菜单,反之则没有子菜单
             if isinstance(menus[parent], dict):
                 for menu in menus[parent]:
-                    print parent, menu
                     if menu != u'父菜单':
                         page.open_the_menu(parent, menu)
                         time.sleep(1)
@@ -35,7 +34,6 @@ class CaseMenu(unittest.TestCase):
                         except AssertionError as e:
                             print menu, u'打开此菜单测试不通过！', e
             else:
-                print parent
                 page.open_the_menu(parent)
                 time.sleep(1)
                 tab_name = page.get_tab_name(parent)

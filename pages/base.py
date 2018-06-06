@@ -9,6 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException as NoSuchE
 from pages.element_location import loc_base as locator
 from test_data import td_login as td
+from selenium.webdriver.support.select import Select
 
 
 class BasePage(object):
@@ -77,14 +78,13 @@ class BasePage(object):
         except NoSuchE as e:
             print u'点击该元素失败', e
 
-    def is_visible(self, loc):
+    def is_visible(self, loc):  # 页面是否可见，若是，返回元素对象；反之，返回False
         try:
-            # self.driver.implicitly_wait(30)
             return WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(loc))
         except Exception as e:
             print u'尚未定位到该元素！', e
 
-    def open_the_menu(self, parent, node=''):
+    def open_the_menu(self, parent, node=''):  # 点击页面左侧菜单
         try:
             if not node:
                 self.find_element(*(locator.menu[parent])).click()
@@ -94,9 +94,19 @@ class BasePage(object):
         except Exception as e:
             print u'打开菜单失败！', e
 
-    def get_tab_name(self, tab):
+    def get_tab_name(self, tab):  # 打开页面后，获取相应的选项卡名称
         return self.find_element(*locator.tab[tab][tab]).text
 
-    def close_tab(self, tab):
-        # self.find_element(*locator.tab[tab]['exit']).click()
+    def close_tab(self, tab):  # 关闭选项卡
         self.click(locator.tab[tab]['exit'])
+
+    def input_search(self, key_word, **loc_input_item):  # 发、到站、货物等下拉列表选择
+        self.find_element(*loc_input_item['input']).send_keys(key_word)  # 先录入关键字
+        self.click(loc_input_item['item'])  # 展开的下拉项中点击选择第一项
+
+    def select_value(self, value, *loc_select):  # select下拉列表选择某一项
+        s = self.find_element(*loc_select)  # loc_select 是指下拉项input的元素定位
+        Select(s).select_by_visible_text(value)  # value是指下拉列表中的文本
+
+
+

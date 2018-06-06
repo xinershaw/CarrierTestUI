@@ -10,7 +10,6 @@ from pages.element_location import loc_base as loc_base
 from pages import get_data_DB as Db
 import datetime
 import time
-from selenium.webdriver.support.select import Select
 from selenium.webdriver.common.action_chains import ActionChains as Ac
 
 
@@ -53,26 +52,18 @@ class ArOrderAdd(BasePage):
             return True
         else:
             return False
-
-    def select_value(self, item, *loc_select):  # select下拉列表选择某一项
-        s = self.find_element(*loc_select)
-        Select(s).select_by_visible_text(item)
-
-    def input_group(self, station_name, **loc_input_item):  # 发、到站下拉列表选择
-        self.find_element(*loc_input_item['input']).send_keys(station_name)
-        self.click(loc_input_item['item'])
-
-    def input_s_station(self, station_name):  # 录入发站
-        key_word = {'input': loc.ar_add_order[u'发站'], 'item': loc.ar_add_order[u'发站列表1']}
-        self.input_group(station_name, **key_word)
-
-    def input_e_station(self, station_name):  # 录入到站
-        key_word = {'input': loc.ar_add_order[u'到站'], 'item': loc.ar_add_order[u'到站列表1']}
-        self.input_group(station_name, **key_word)
-
-    def input_g_name(self, goods_name):  # 录入货物名称
-        key_word = {'input': loc.ar_add_order[u'货物名称'], 'item': loc.ar_add_order[u'货物列表1']}
-        self.input_group(goods_name, **key_word)
+    #
+    # def input_s_station(self, station_name):  # 录入发站
+    #     # input_list = {'input': loc.ar_add_order[u'发站']['input'], 'item': loc.ar_add_order[u'发站列表1']}
+    #     self.input_group(station_name, **loc.ar_add_order[u'发站'])
+    #
+    # def input_e_station(self, station_name):  # 录入到站
+    #     input_list = {'input': loc.ar_add_order[u'到站'], 'item': loc.ar_add_order[u'到站列表1']}
+    #     self.input_group(station_name, **input_list)
+    #
+    # def input_g_name(self, goods_name):  # 录入货物名称
+    #     input_list = {'input': loc.ar_add_order[u'货物名称'], 'item': loc.ar_add_order[u'货物列表1']}
+    #     self.input_group(goods_name, **input_list)
 
     # 两个到站装卸费，由于页面JS有特殊处理，所以脚本需要单独处理，否则只能录入为0
     def input_handing_price(self, is_r, test_data):
@@ -92,13 +83,13 @@ class ArOrderAdd(BasePage):
         self.select_value(all_items[u'运输方式'], *(loc.ar_add_order[u'运输方式']))
         self.select_value(all_items[u'服务方式'], *(loc.ar_add_order[u'服务方式']))
         self.select_value(all_items[u'支付方式'], *(loc.ar_add_order[u'支付方式']))
-        self.input_s_station(all_items[u'发站'])
-        self.input_e_station(all_items[u'到站'])
+        self.input_search(all_items[u'发站'], **loc.ar_add_order[u'发站'])
+        self.input_search(all_items[u'到站'], **loc.ar_add_order[u'到站'])
         self.send_keys(all_items[u'发货人'], *(loc.ar_add_order[u'发货人']))
         self.send_keys(all_items[u'收货人'], *(loc.ar_add_order[u'收货人']))
         self.send_keys(all_items[u'发货人手机号'], *(loc.ar_add_order[u'发货人手机号']))
         self.send_keys(all_items[u'收货人手机号'], *(loc.ar_add_order[u'收货人手机号']))
-        self.input_g_name(all_items[u'货物名称'])
+        self.input_search(all_items[u'货物名称'], **loc.ar_add_order[u'货物名称'])
         self.find_element(*(loc.ar_add_order[u'货物包装'])).send_keys(all_items[u'货物包装'])
         self.find_element(*(loc.ar_add_order[u'件数'])).send_keys(all_items[u'件数'])
         self.send_keys(all_items[u'重量'], *(loc.ar_add_order[u'重量']))

@@ -6,7 +6,6 @@ Project:......
 """
 from selenium.webdriver.common.by import By
 
-
 # 到货分理列表
 ar_order = {
     u'首页': (By.ID, 'firstPage'),  # 首页选项卡
@@ -15,13 +14,22 @@ ar_order = {
     # u'新增': (By.XPATH, "//*[@id='searchForm']/div[12]/a"),
     u'新增': (By.LINK_TEXT, u'新增到货分理'),
     u'导出': (By.ID, 'btnExport'),
-    u'搜索': (By.ID, 'btnSearch'),
     u'查询条件':{
-        u'订单号': (By.ID, 'TransitOrderCode'),
-        u'原票号': (By.ID, 'OldBillNum')
-    },
+        'input': {
+            u'订单号': (By.ID, 'TransitOrderCode'),
+            u'原票号': (By.ID, 'OldBillNum'),
+            },
+        'select': {
+
+        },
+        'input_search': {
+
+        },
+        u'搜索': (),
+        },
     u'列表': {
         u'整体': (By.ID, 'tablelist'),
+        u'运单号表头': (By.XPATH, "//*[@id='tablelist']/div[2]/div[1]/table/thead/tr/th[3]"),
         u'运单号1行': (By.XPATH, "//*[@id='tablelist']/div[2]/div[1]/table/tbody/tr[1]/td[3]/span")
     },
     # u'': (),
@@ -43,17 +51,23 @@ ar_add_order = {
     u'运输方式': (By.ID, 'DeliverType'),
     u'服务方式': (By.ID, 'ServiceType'),
     u'支付方式': (By.ID, 'PayType'),
-    u'发站': (By.ID, 'StartPlaceName'),
-    u'发站列表1': (By.XPATH, "//*[@id='shipperForm']/div[1]/div/div/ul/table/tbody/tr[1]"),
-    u'到站': (By.ID, 'EndPlaceName'),
-    u'到站列表1': (By.XPATH, "//*[@id='receiveForm']/div[1]/div/div/ul/table/tbody/tr[1]"),
+    u'发站': {  # 固定格式
+        'input': (By.ID, 'StartPlaceName'),
+        'item': (By.XPATH, "//*[@id='shipperForm']/div[1]/div/div/ul/table/tbody/tr[1]")
+        },
+    u'到站': {  # 固定格式
+        'input': (By.ID, 'EndPlaceName'),
+        'item': (By.XPATH, "//*[@id='receiveForm']/div[1]/div/div/ul/table/tbody/tr[1]")
+        },
     u'发货人': (By.ID, 'ShipperName'),
     u'收货人': (By.ID, 'ReceiverName'),
     u'发货人手机号': (By.ID, 'ShipperPhone'),
     u'收货人手机号': (By.ID, 'ReceiverPhone'),
     u'收货人地址': (By.ID, ''),
-    u'货物名称': (By.ID, 'CargoTypeId'),
-    u'货物列表1': (By.XPATH, "//*[@id='sel']/table/tbody/tr[1]"),
+    u'货物名称': {  # 固定格式
+        'input': (By.ID, 'CargoTypeId'),
+        'item': (By.XPATH, "//*[@id='sel']/table/tbody/tr[1]")
+        },
     u'车型': (By.ID, 'GoodsPacking'),
     u'货物包装': (By.ID, 'GoodsPacking'),
     u'件数': (By.ID, 'TotalCount'),
