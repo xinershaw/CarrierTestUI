@@ -19,7 +19,7 @@ class ArOrderAdd(BasePage):
         self.open_the_menu(u'运单', u'到货分理')  # 从菜单打开到货分理列表页
         # 激活到货分理frame
         self.click(loc_base.tab[u'首页'])
-        self.click(loc_base.tab[u'到货分理'])
+        self.click(loc_base.tab[u'到货分理'][u'到货分理'])
         # 切换进到货分理frame
         self.to_frame(*(loc.ar_order['frame']))
         time.sleep(3)  # 强制等待页面（到货分理列表页）加载，否则新增到货分理按钮无法点击

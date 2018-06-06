@@ -18,12 +18,20 @@ ar_order = {
         'input': {
             u'订单号': (By.ID, 'TransitOrderCode'),
             u'原票号': (By.ID, 'OldBillNum'),
+            u'运单号': (By.ID, 'DeliverCode')
             },
         'select': {
-
+            u'运输方式': (By.ID, 'DeliverType')
         },
         'input_search': {
-
+            u'发站': {  # 固定格式
+                'input': (By.ID, 'StartPlaceName'),
+                'item': (By.XPATH, "//*[@id='searchForm']/div[6]/div/div/ul/table/tbody/tr[1]")
+            },
+            u'到站': {  # 固定格式
+                'input': (By.ID, 'EndPlaceName'),
+                'item': (By.XPATH, "//*[@id='searchForm']/div[7]/div/div/ul/table/tbody/tr[1]")
+            }
         },
         u'搜索': (),
         },

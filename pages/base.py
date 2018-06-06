@@ -108,5 +108,31 @@ class BasePage(object):
         s = self.find_element(*loc_select)  # loc_select 是指下拉项input的元素定位
         Select(s).select_by_visible_text(value)  # value是指下拉列表中的文本
 
+    def input_query_item(self, **keyword):
+        """ keyword={
+                input:{
+                item1:[value, loc],
+                item2:[value, loc],
+                ......},
+                select:{
+                item1:[value, loc],
+                item2:[value, loc],
+                ......},
+                input_search:{
+                item1:[value, **loc],
+                item2:[value, **loc],
+                ......}
+                """
+        for i in keyword:
+            if i == 'input':
+                for j in keyword[i]:
+                    self.send_keys(keyword[i][j][0], keyword[i][j][1])
+            if i == 'select':
+                for j in keyword[i]:
+                    self.select_value(keyword[i][j][0], keyword[i][j][1])
+            else:
+                for j in keyword[i]:
+                    self.input_search(keyword[i][j][0], **keyword[i][j][1])
+
 
 
