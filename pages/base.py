@@ -127,7 +127,7 @@ class BasePage(object):
             if i == 'input':
                 for j in keyword[i]:
                     self.send_keys(keyword[i][j][0], keyword[i][j][1])
-            if i == 'select':
+            elif i == 'select':
                 for j in keyword[i]:
                     self.select_value(keyword[i][j][0], keyword[i][j][1])
             else:
