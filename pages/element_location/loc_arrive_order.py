@@ -2,7 +2,7 @@
 """
 Created on 2018年5月15日
 @author: Xiaoxin
-Project:......
+Project: 每个字典变量指每个页面的所有元素定位
 """
 from selenium.webdriver.common.by import By
 
@@ -32,13 +32,13 @@ ar_order = {
                 'input': (By.ID, 'EndPlaceName'),
                 'item': (By.XPATH, "//*[@id='searchForm']/div[7]/div/div/ul/table/tbody/tr[1]")
             }
-        },
-        u'搜索': (),
-        },
+        },},
+    u'搜索': (),
+    u'重置':(),
     u'列表': {
         u'整体': (By.ID, 'tablelist'),
-        u'运单号表头': (By.XPATH, "//*[@id='tablelist']/div[2]/div[1]/table/thead/tr/th[3]"),
-        u'运单号1行': (By.XPATH, "//*[@id='tablelist']/div[2]/div[1]/table/tbody/tr[1]/td[3]/span")
+        u'表头': (By.XPATH, "//*[@id='tablelist']/div[2]/div[1]/table/thead/tr/th"),
+        u'第一行': (By.XPATH, "//*[@id='tablelist']/div[2]/div[1]/table/tbody/tr[1]/td/span")
     },
     # u'': (),
     # u'': (),

@@ -106,10 +106,6 @@ class ArOrderAdd(BasePage):
         self.click(loc.ar_add_order[u'保存并提交'])
         return order_code
 
-    def get_table_ordercode(self):  # 到货分理列表，获取列表第一行数据的运单号
-        self.is_visible(loc.ar_order[u'列表'][u'整体'])
-        return self.find_element(*(loc.ar_order[u'列表'][u'运单号1行'])).text  # get_attribute("value")
-
 
 
 

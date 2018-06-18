@@ -8,7 +8,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException as NoSuchE
 from pages.element_location import loc_base as locator
-from test_data import td_login as td
+from test_data import td_login as td_l
 from selenium.webdriver.support.select import Select
 
 
@@ -29,8 +29,8 @@ class BasePage(object):
         self._open(self.base_url)
 
     def login(self):
-        username = td.login[u'用户名']
-        password = td.login[u'密码']
+        username = td_l.login[u'用户名']
+        password = td_l.login[u'密码']
         username_loc = locator.login[u'用户名']
         password_loc = locator.login[u'密码']
         submit_loc = locator.login[u'提交']
@@ -107,32 +107,5 @@ class BasePage(object):
     def select_value(self, value, *loc_select):  # select下拉列表选择某一项
         s = self.find_element(*loc_select)  # loc_select 是指下拉项input的元素定位
         Select(s).select_by_visible_text(value)  # value是指下拉列表中的文本
-
-    def input_query_item(self, **keyword):
-        """ keyword={
-                input:{
-                item1:[value, loc],
-                item2:[value, loc],
-                ......},
-                select:{
-                item1:[value, loc],
-                item2:[value, loc],
-                ......},
-                input_search:{
-                item1:[value, **loc],
-                item2:[value, **loc],
-                ......}
-                """
-        for i in keyword:
-            if i == 'input':
-                for j in keyword[i]:
-                    self.send_keys(keyword[i][j][0], keyword[i][j][1])
-            elif i == 'select':
-                for j in keyword[i]:
-                    self.select_value(keyword[i][j][0], keyword[i][j][1])
-            else:
-                for j in keyword[i]:
-                    self.input_search(keyword[i][j][0], **keyword[i][j][1])
-
 
 
