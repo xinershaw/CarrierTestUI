@@ -19,8 +19,8 @@ from selenium.webdriver.common.action_chains import ActionChains as Ac
 class ArOrder(BasePage):
     def query_order_code(self, code):
         item = u'运单号'
-        sf.single_query(code, item, loc_a_o.ar_order)
+        sf.single_query(item, code, loc_a_o.ar_order)
         line1 = sf.get_line1(loc_a_o.ar_order)
-        sf.combined_query(loc_a_o.ar_order)
+        sf.combined_query(td.items(), loc_a_o.ar_order)
         return line1[item]
 
