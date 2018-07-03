@@ -24,8 +24,15 @@ class SearchForm(BasePage):
 
     def get_line1(self, **loc):  # 到货分理列表，获取列表第一行数据的运单号 loc是指定位器中的字典变量
         line1 = dict()
-        for head, data in self.find_elements(*loc[u'列表'][u'表头']), self.find_elements(*loc[u'列表'][u'第一行']):
-            line1.update({head.text: data.text})
+        heads = []
+        values = []
+        heads_o = self.find_elements(*loc[u'列表'][u'表头'])
+        for i in range(1, len(heads_o)):
+            heads.append(heads_o[i].text)
+        for o in self.find_elements(*loc[u'列表'][u'第一行']):
+            values.append(o.text)
+        for head, value in zip(heads, values):
+                line1.update({head: value})
         return line1
 
 

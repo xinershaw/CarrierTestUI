@@ -110,9 +110,7 @@ class BasePage(object):
 
     def order_input_items(self, *items, **test_data):  # 挑选要录入的文本框(items),test_data指test_data路径下的测试数据
         td = dict()
-        print items
         for i in items:
-            print i
             try:
                 td.update({i: test_data[i]})
             except KeyError:
