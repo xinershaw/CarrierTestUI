@@ -18,16 +18,14 @@ class SearchForm(BasePage):
         self.input_items(*test_data, **loc)
         self.click(loc[u'搜索'])
 
-    def single_query(self, item, test_data, **loc):  # 单一查询 loc是指定位器中的字典变量
-        self.send_keys(test_data, loc[u'查询条件'][item])
+    def single_query(self, item_input, item_name, item_type, **loc):  # 单一查询 loc是指定位器中的字典变量
+        self.send_keys(item_input, *loc[u'查询条件'][item_type][item_name])
         self.click(loc[u'搜索'])
 
     def get_line1(self, **loc):  # 到货分理列表，获取列表第一行数据的运单号 loc是指定位器中的字典变量
         line1 = dict()
-        heads = self.find_elements(loc[u'列表'][u'表头']).text
-        line1_data = self.find_elements(loc[u'列表'][u'第一行']).text
-        for n in range(1, len(heads)):
-            line1.update({heads[n], line1_data[n]})
+        for head, data in self.find_elements(*loc[u'列表'][u'表头']), self.find_elements(*loc[u'列表'][u'第一行']):
+            line1.update({head.text: data.text})
         return line1
 
 

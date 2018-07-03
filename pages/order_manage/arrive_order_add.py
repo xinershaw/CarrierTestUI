@@ -30,10 +30,10 @@ class ArOrderAdd(BasePage):
         self.click(loc.ar_add_order[u'到货时间']['input_date'])
         self.click(loc.ar_add_order[u'到货时间']['today'])
 
-    def write_order_code(self):
+    def input_order_code(self):
         today = datetime.datetime.now()
         pre_code = today.strftime('%y')+today.strftime('%m')+today.strftime('%d')
-        db_cy = Db.DB('jshc_carrier')
+        db_cy = Db.DB('jshc_carrier_v2')
         sql_cy = "SELECT jot.DeliverCode FROM jshc_o_deliverorder jot WHERE jot.DeliverCode like " + "'" + \
                  pre_code+"%'" + "ORDER BY jot.CreateTime DESC LIMIT 1 "
         old_code = db_cy.query(sql_cy)
@@ -41,29 +41,8 @@ class ArOrderAdd(BasePage):
             order_code = int(old_code.__str__()[4:14])+1
         else:
             order_code = pre_code + '0001'
-        self.find_element(*(loc.ar_add_order[u'运单号'])).send_keys(order_code)
+        self.send_keys(order_code, *loc.ar_add_order[u'运单号'])
         return order_code
-
-    def order_from_db(self, order_code):  # 根据录入运单号到DB查询相应运单并返回运单号
-        db_cy = Db.DB('jshc_carrier')
-        sql_cy = "SELECT jot.DeliverCode FROM jshc_o_deliverorder jot WHERE jot.DeliverCode = '" + str(order_code) + "'"
-        code_db = db_cy.query(sql_cy)
-        if code_db:
-            return True
-        else:
-            return False
-    #
-    # def input_s_station(self, station_name):  # 录入发站
-    #     # input_list = {'input': loc.ar_add_order[u'发站']['input'], 'item': loc.ar_add_order[u'发站列表1']}
-    #     self.input_group(station_name, **loc.ar_add_order[u'发站'])
-    #
-    # def input_e_station(self, station_name):  # 录入到站
-    #     input_list = {'input': loc.ar_add_order[u'到站'], 'item': loc.ar_add_order[u'到站列表1']}
-    #     self.input_group(station_name, **input_list)
-    #
-    # def input_g_name(self, goods_name):  # 录入货物名称
-    #     input_list = {'input': loc.ar_add_order[u'货物名称'], 'item': loc.ar_add_order[u'货物列表1']}
-    #     self.input_group(goods_name, **input_list)
 
     # 两个到站装卸费，由于页面JS有特殊处理，所以脚本需要单独处理，否则只能录入为0
     def input_handing_price(self, is_r, test_data):
@@ -79,30 +58,38 @@ class ArOrderAdd(BasePage):
             js = "document.getElementById('HandingPrice').value = " + str(test_data)
             self.driver.execute_script(js)
 
-    def input_all(self, **all_items):  # 录入所有必填项
-        self.select_value(all_items[u'运输方式'], *(loc.ar_add_order[u'运输方式']))
-        self.select_value(all_items[u'服务方式'], *(loc.ar_add_order[u'服务方式']))
-        self.select_value(all_items[u'支付方式'], *(loc.ar_add_order[u'支付方式']))
-        self.input_search(all_items[u'发站'], **loc.ar_add_order[u'发站'])
-        self.input_search(all_items[u'到站'], **loc.ar_add_order[u'到站'])
-        self.send_keys(all_items[u'发货人'], *(loc.ar_add_order[u'发货人']))
-        self.send_keys(all_items[u'收货人'], *(loc.ar_add_order[u'收货人']))
-        self.send_keys(all_items[u'发货人手机号'], *(loc.ar_add_order[u'发货人手机号']))
-        self.send_keys(all_items[u'收货人手机号'], *(loc.ar_add_order[u'收货人手机号']))
-        self.input_search(all_items[u'货物名称'], **loc.ar_add_order[u'货物名称'])
-        self.find_element(*(loc.ar_add_order[u'货物包装'])).send_keys(all_items[u'货物包装'])
-        self.find_element(*(loc.ar_add_order[u'件数'])).send_keys(all_items[u'件数'])
-        self.send_keys(all_items[u'重量'], *(loc.ar_add_order[u'重量']))
-        self.send_keys(all_items[u'体积'], *(loc.ar_add_order[u'体积']))
-        self.find_element(*(loc.ar_add_order[u'其他费'])).send_keys(all_items[u'其他费'])
-        self.input_handing_price(1, all_items[u'装卸费铁'])
-        self.input_handing_price(0, all_items[u'装卸费收'])
-
-    def save_submit(self, **all_items):  # 保存并提交，且获取录入的运单号
-        self.open_page_add()
+    def input_order_info(self, **test_data):
         self.input_arrive_date()
-        order_code = self.write_order_code()
-        self.input_all(**all_items)
+        order_code = self.input_order_code()
+        td = self.order_input_items(u'原票号', u'车厢号', u'客户编码', u'客户名称', u'运输方式', u'服务方式', u'支付方式',
+                                    **test_data)
+        self.input_items(td.items(), **loc.ar_add_order)
+        return order_code
+
+    def input_who_info(self, **test_data):
+        self.input_search(test_data[u'发站'], **loc.ar_add_order['input_search'][u'发站'])
+        self.input_search(test_data[u'到站'], **loc.ar_add_order['input_search'][u'到站'])
+        td = self.order_input_items(u'发货人', u'发货人手机号', u'发货人座机号', u'收货人', u'收货人手机号',
+                                    u'收货人座机号', **test_data)
+        self.input_items(td.items(), **loc.ar_add_order)
+
+    def input_goods_info(self, **test_data):
+        td = self.order_input_items(u'货物名称', u'箱型', u'箱数', u'重量', u'体积', u'货物包装', u'件数',u'车型',
+                                    **test_data)
+        self.input_items(td.items(), **loc.ar_add_order)
+
+    def input_other_info(self, **test_data):
+        td = self.order_input_items(u'其他费', u'取送车费', u'代收费用', u'备注', **test_data)
+        self.input_items(td.items(), **loc.ar_add_order)
+        self.input_handing_price(1, test_data[u'装卸费铁'])
+        self.input_handing_price(0, test_data[u'装卸费收'])
+
+    def save_submit(self, **test_data):  # 保存并提交，且获取录入的运单号
+        self.open_page_add()
+        order_code = self.input_order_info(**test_data)
+        self.input_who_info(**test_data)
+        self.input_goods_info(**test_data)
+        self.input_other_info(**test_data)
         self.click(loc.ar_add_order[u'保存并提交'])
         return order_code
 

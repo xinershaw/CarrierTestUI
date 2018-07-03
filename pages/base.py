@@ -108,6 +108,17 @@ class BasePage(object):
         s = self.find_element(*loc_select)  # loc_select 是指下拉项input的元素定位
         Select(s).select_by_visible_text(value)  # value是指下拉列表中的文本
 
+    def order_input_items(self, *items, **test_data):  # 挑选要录入的文本框(items),test_data指test_data路径下的测试数据
+        td = dict()
+        print items
+        for i in items:
+            print i
+            try:
+                td.update({i: test_data[i]})
+            except KeyError:
+                continue
+        return td
+
     def input_items(self, *test_data, **locators):
         """ locators={
                 input:{
@@ -126,12 +137,14 @@ class BasePage(object):
                        item2:data2,
                        .........}
         """
-        for t in test_data:
+        for t in test_data[0]:
             if t[0] in locators['input']:
-                self.send_keys(t[1], locators['input'][t[0]])
+                self.send_keys(t[1], *locators['input'][t[0]])
             elif t[0] in locators['select']:
-                self.select_value(t[1], locators['select'][t[0]])
+                self.select_value(t[1], *locators['select'][t[0]])
             elif t[0] in locators['input_search']:
                 self.input_search(t[1], **locators['input_search'][t[0]])
+            else:
+                continue
 
 
