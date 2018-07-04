@@ -32,7 +32,7 @@ class CaseMenu(unittest.TestCase):
                         try:
                             self.assertEqual(menu, tab_name)
                         except AssertionError as e:
-                            print menu, u'打开此菜单测试不通过！', e
+                            print menu, u'打开此菜单的tab页测试不通过！', e
             else:
                 page.open_the_menu(parent)
                 time.sleep(1)
@@ -41,7 +41,7 @@ class CaseMenu(unittest.TestCase):
                 try:
                     self.assertEqual(parent, tab_name)
                 except AssertionError as e:
-                    print parent, u'打开此菜单测试不通过！', e
+                    print parent, u'打开此菜单的tab页测试不通过！', e
 
     def tearDown(self):
         self.driver.quit()

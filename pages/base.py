@@ -98,7 +98,10 @@ class BasePage(object):
         return self.find_element(*locator.tab[tab][tab]).text
 
     def close_tab(self, tab):  # 关闭选项卡
-        self.click(locator.tab[tab]['exit'])
+        try:
+            self.click(locator.tab[tab]['exit'])
+        except Exception as e:
+            print u'关闭此tab页失败！', e
 
     def input_search(self, key_word, **loc_input_item):  # 发、到站、货物等下拉列表选择
         self.find_element(*loc_input_item['input']).send_keys(key_word)  # 先录入关键字
