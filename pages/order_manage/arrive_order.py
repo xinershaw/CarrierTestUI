@@ -7,13 +7,10 @@ Project:......
 from pages.base import BasePage
 from pages.search_form import SearchForm
 from pages.element_location import loc_arrive_order as loc_a_o
-from test_data.td_arrive_order import ar_order_search1 as td
 from pages.element_location import loc_base as loc_base
-from pages import get_data_DB as Db
-import datetime
 import time
-from selenium.webdriver.support.select import Select
-from selenium.webdriver.common.action_chains import ActionChains as Ac
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class ArOrder(BasePage):
@@ -29,9 +26,9 @@ class ArOrder(BasePage):
 
     def query_order_code(self, code):
         search_form = SearchForm(self.driver)
-        item = u'运单号'
-        search_form.single_query(code, item, u'input', **loc_a_o.ar_order)
-        time.sleep(2)
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(loc_a_o.ar_order[u'列表'][u'整体']))
+        search_form.single_query(code, u'运单号', **loc_a_o.ar_order)
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(loc_a_o.ar_order[u'列表'][u'第一行']))
         line1 = search_form.get_line1(**loc_a_o.ar_order)
-        return line1[item]
+        return line1[u'运单号']
 

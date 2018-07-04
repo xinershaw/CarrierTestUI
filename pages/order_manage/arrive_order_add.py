@@ -11,6 +11,8 @@ from pages import get_data_DB as Db
 import datetime
 import time
 from selenium.webdriver.common.action_chains import ActionChains as Ac
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class ArOrderAdd(BasePage):
@@ -61,7 +63,7 @@ class ArOrderAdd(BasePage):
     def input_order_info(self, **test_data):
         self.input_arrive_date()
         order_code = self.input_order_code()
-        td = self.order_input_items(u'原票号', u'车厢号', u'客户编码', u'客户名称', u'运输方式', u'服务方式', u'支付方式',
+        td = self.sort_input_items(u'原票号', u'车厢号', u'客户编码', u'客户名称', u'运输方式', u'服务方式', u'支付方式',
                                     **test_data)
         self.input_items(td.items(), **loc.ar_add_order)
         return order_code
@@ -69,17 +71,17 @@ class ArOrderAdd(BasePage):
     def input_who_info(self, **test_data):
         self.input_search(test_data[u'发站'], **loc.ar_add_order['input_search'][u'发站'])
         self.input_search(test_data[u'到站'], **loc.ar_add_order['input_search'][u'到站'])
-        td = self.order_input_items(u'发货人', u'发货人手机号', u'发货人座机号', u'收货人', u'收货人手机号',
+        td = self.sort_input_items(u'发货人', u'发货人手机号', u'发货人座机号', u'收货人', u'收货人手机号',
                                     u'收货人座机号', **test_data)
         self.input_items(td.items(), **loc.ar_add_order)
 
     def input_goods_info(self, **test_data):
-        td = self.order_input_items(u'货物名称', u'箱型', u'箱数', u'重量', u'体积', u'货物包装', u'件数',u'车型',
+        td = self.sort_input_items(u'货物名称', u'箱型', u'箱数', u'重量', u'体积', u'货物包装', u'件数',u'车型',
                                     **test_data)
         self.input_items(td.items(), **loc.ar_add_order)
 
     def input_other_info(self, **test_data):
-        td = self.order_input_items(u'其他费', u'取送车费', u'代收费用', u'备注', **test_data)
+        td = self.sort_input_items(u'其他费', u'取送车费', u'代收费用', u'备注', **test_data)
         self.input_items(td.items(), **loc.ar_add_order)
         self.input_handing_price(1, test_data[u'装卸费铁'])
         self.input_handing_price(0, test_data[u'装卸费收'])
@@ -91,6 +93,7 @@ class ArOrderAdd(BasePage):
         self.input_goods_info(**test_data)
         self.input_other_info(**test_data)
         self.click(loc.ar_add_order[u'保存并提交'])
+        WebDriverWait(self.driver, 25).until(EC.invisibility_of_element_located(loc.ar_add_order[u'保存并提交']))
         return order_code
 
 

@@ -38,7 +38,8 @@ ar_order = {
     u'列表': {
         u'整体': (By.ID, 'tablelist'),
         u'表头': (By.XPATH, "//*[@id='tablelist']/div[2]/div[1]/table/thead/tr/th"),
-        u'第一行': (By.XPATH, "//*[@id='tablelist']/div[2]/div[1]/table/tbody/tr[1]/td/span")
+        u'第一行': (By.XPATH, "//*[@id='tablelist']/div[2]/div[1]/table/tbody/tr[1]"),
+        u'第一行所有数据': (By.XPATH, "//*[@id='tablelist']/div[2]/div[1]/table/tbody/tr[1]/td/span")
     },
     # u'': (),
     # u'': (),

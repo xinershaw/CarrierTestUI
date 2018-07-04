@@ -108,7 +108,7 @@ class BasePage(object):
         s = self.find_element(*loc_select)  # loc_select 是指下拉项input的元素定位
         Select(s).select_by_visible_text(value)  # value是指下拉列表中的文本
 
-    def order_input_items(self, *items, **test_data):  # 挑选要录入的文本框(items),test_data指test_data路径下的测试数据
+    def sort_input_items(self, *items, **test_data):  # 挑选要录入的文本框(items),test_data指test_data路径下的测试数据
         td = dict()
         for i in items:
             try:
