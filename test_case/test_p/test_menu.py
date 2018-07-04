@@ -6,8 +6,9 @@ Project:......
 """
 import unittest
 from selenium import webdriver
+from test_data import td_login
 from pages import base
-from pages.element_location import loc_base as loc
+from pages.element_location import loc_base
 import time
 
 
@@ -19,7 +20,7 @@ class CaseMenu(unittest.TestCase):
     def test_open_menus(self):  # 新增到货分理-冒烟测试
         page = base.BasePage(self.driver)
         page.login()
-        menus = loc.menu
+        menus = loc_base.menu
         for parent in menus:
             # 如果是dict，说明有子菜单,反之则没有子菜单
             if isinstance(menus[parent], dict):
@@ -28,6 +29,9 @@ class CaseMenu(unittest.TestCase):
                         page.open_the_menu(parent, menu)
                         time.sleep(1)
                         tab_name = page.get_tab_name(menu)
+                        page.to_frame(menu)
+                        html = page.driver.page_source
+                        print html
                         page.close_tab(menu)
                         try:
                             self.assertEqual(menu, tab_name)

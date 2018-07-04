@@ -8,8 +8,9 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException as NoSuchE
 from pages.element_location import loc_base as locator
-from test_data import td_login as td_l
 from selenium.webdriver.support.select import Select
+from selenium.webdriver.common.by import By
+from test_data import td_login
 
 
 class BasePage(object):
@@ -29,16 +30,11 @@ class BasePage(object):
         self._open(self.base_url)
 
     def login(self):
-        username = td_l.login[u'用户名']
-        password = td_l.login[u'密码']
-        username_loc = locator.login[u'用户名']
-        password_loc = locator.login[u'密码']
-        submit_loc = locator.login[u'提交']
         self.open()
         try:
-            self.find_element(*username_loc).send_keys(username)
-            self.find_element(*password_loc).send_keys(password)
-            self.find_element(*submit_loc).click()
+            self.find_element(*locator.login[u'用户名']).send_keys(td_login.login[u'用户名'])
+            self.find_element(*locator.login[u'密码']).send_keys(td_login.login[u'密码'])
+            self.find_element(*locator.login[u'提交']).click()
         except Exception as e:
             print "登录失败！", e
 
@@ -56,11 +52,19 @@ class BasePage(object):
         except NoSuchE as e:
             print u"页面中未找到这些元素", e
 
-    def to_frame(self, *loc):
+    def to_frame(self, menu_name):
+        # 先激活要去的frame
+        self.click(locator.tab[u'首页'])
+        self.click(locator.tab[menu_name][menu_name])
+        xpath_text = ''
         try:
-            WebDriverWait(self.driver, 10).until(EC.frame_to_be_available_and_switch_to_it(self.find_element(*loc)))
+            WebDriverWait(self.driver, 10).until(EC.frame_to_be_available_and_switch_to_it
+                                                 (self.find_element(*locator.frame[menu_name])))
+            EC.title_contains
         except NoSuchE as e:
             print u"切换到此frame失败！", e
+        finally:
+            return self.find_element(*(By.XPATH, ''))
 
     def send_keys(self, value, *loc):
         # clear_first = True, click_first = True

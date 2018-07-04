@@ -6,12 +6,8 @@ Project: 每个字典变量指每个页面的所有元素定位
 """
 from selenium.webdriver.common.by import By
 
-# 到货分理列表
+# 到货分理列表页
 ar_order = {
-    u'首页': (By.ID, 'firstPage'),  # 首页选项卡
-    u'到货分理': (By.XPATH, "//a[contains(@data-id,'/ArriveOrder/Index')]"),  # 到货分理选项卡
-    'frame': (By.NAME, 'iframe4'),
-    # u'新增': (By.XPATH, "//*[@id='searchForm']/div[12]/a"),
     u'新增': (By.LINK_TEXT, u'新增到货分理'),
     u'导出': (By.ID, 'btnExport'),
     u'查询条件':{
@@ -32,7 +28,8 @@ ar_order = {
                 'input': (By.ID, 'EndPlaceName'),
                 'item': (By.XPATH, "//*[@id='searchForm']/div[7]/div/div/ul/table/tbody/tr[1]")
             }
-        },},
+        },
+    },
     u'搜索': (By.ID, 'btnSearch'),
     u'重置':(By.ID, 'btnReset'),
     u'列表': {
@@ -41,8 +38,6 @@ ar_order = {
         u'第一行': (By.XPATH, "//*[@id='tablelist']/div[2]/div[1]/table/tbody/tr[1]"),
         u'第一行所有数据': (By.XPATH, "//*[@id='tablelist']/div[2]/div[1]/table/tbody/tr[1]/td/span")
     },
-    # u'': (),
-    # u'': (),
 }
 
 # 新增到货分理
