@@ -13,8 +13,8 @@ case_path = os.path.join(os.getcwd(), "test_case")  # 存放测试用例的路�
 
 # 存放测试报告的文件夹
 report_path = os.path.join(os.getcwd(), "test_report")
-d = datetime.datetime.now().strftime('%Y%m%d%H%M')  # 根据年月日时分秒为测试报告命名
-filename = report_path + '\TestResult' + d + '.html'  # 根据执行测试的日期时间为测试报告命名
+create_time = datetime.datetime.now().strftime('%Y%m%d%H%M')  # 根据年月日时分秒为测试报告命名
+filename = report_path + '\TestResult' + create_time + '.html'  # 根据执行测试的日期时间为测试报告命名
 fp = file(filename, 'wb')
 
 # 加载case_path路径下的所有Test开头的py文件（测试用例）

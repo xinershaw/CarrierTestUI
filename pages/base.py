@@ -7,7 +7,7 @@ Project:......
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException as NoSuchE
-from pages.element_location import loc_base as locator
+from pages.element_location import loc_base
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.common.by import By
 from test_data import td_login
@@ -32,9 +32,9 @@ class BasePage(object):
     def login(self):
         self.open()
         try:
-            self.find_element(*locator.login[u'用户名']).send_keys(td_login.login[u'用户名'])
-            self.find_element(*locator.login[u'密码']).send_keys(td_login.login[u'密码'])
-            self.find_element(*locator.login[u'提交']).click()
+            self.find_element(*loc_base.login[u'用户名']).send_keys(td_login.login[u'用户名'])
+            self.find_element(*loc_base.login[u'密码']).send_keys(td_login.login[u'密码'])
+            self.find_element(*loc_base.login[u'提交']).click()
         except Exception as e:
             print "登录失败！", e
 
@@ -54,17 +54,13 @@ class BasePage(object):
 
     def to_frame(self, menu_name):
         # 先激活要去的frame
-        self.click(locator.tab[u'首页'])
-        self.click(locator.tab[menu_name][menu_name])
-        xpath_text = ''
+        self.click(loc_base.tab[u'首页'])
+        self.click(loc_base.tab[menu_name][menu_name])
         try:
             WebDriverWait(self.driver, 10).until(EC.frame_to_be_available_and_switch_to_it
-                                                 (self.find_element(*locator.frame[menu_name])))
-            EC.title_contains
+                                                 (self.find_element(*loc_base.frame[menu_name])))
         except NoSuchE as e:
             print u"切换到此frame失败！", e
-        finally:
-            return self.find_element(*(By.XPATH, ''))
 
     def send_keys(self, value, *loc):
         # clear_first = True, click_first = True
@@ -91,19 +87,19 @@ class BasePage(object):
     def open_the_menu(self, parent, node=''):  # 点击页面左侧菜单
         try:
             if not node:
-                self.find_element(*(locator.menu[parent])).click()
+                self.find_element(*(loc_base.menu[parent])).click()
+                return self.find_element(*loc_base.tab[parent][parent]).text
             else:
-                self.find_element(*(locator.menu[parent][u'父菜单'])).click()  # 展开父菜单
-                self.find_element(*(locator.menu[parent][node])).click()  # 打开子菜单
+                self.find_element(*(loc_base.menu[parent][u'父菜单'])).click()  # 展开父菜单
+                self.find_element(*(loc_base.menu[parent][node])).click()  # 打开子菜单
+                self.find_element(*(loc_base.menu[parent][u'父菜单'])).click()  # 收起子菜单（这一步不可少）
+                return self.find_element(*loc_base.tab[node][node]).text
         except Exception as e:
-            print u'打开菜单失败！', e
-
-    def get_tab_name(self, tab):  # 打开页面后，获取相应的选项卡名称
-        return self.find_element(*locator.tab[tab][tab]).text
+            print u'打开菜单失败！', parent, node, e
 
     def close_tab(self, tab):  # 关闭选项卡
         try:
-            self.click(locator.tab[tab]['exit'])
+            self.click(loc_base.tab[tab]['exit'])
         except Exception as e:
             print u'关闭此tab页失败！', e
 

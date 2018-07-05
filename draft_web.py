@@ -20,8 +20,8 @@ class CaseDraft(unittest.TestCase):
 
     def test_draft(self):
         page = ar.ArOrder(self.driver)
-        # page.login()
-        # page.open_the_menu(u'运单', u'到货分理')  # 从菜单打开到货分理列表页
+        page.login()
+        page.open_the_menu(u'运单', u'到货分理')  # 从菜单打开到货分理列表页
         # # 激活到货分理frame
         # page.click(loc_b.tab[u'首页'])
         # page.click(loc_b.tab[u'到货分理'][u'到货分理'])
