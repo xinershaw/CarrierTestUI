@@ -9,8 +9,9 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException as NoSuchE
 from pages.element_location import loc_base
 from selenium.webdriver.support.select import Select
-from selenium.webdriver.common.by import By
+from selenium.webdriver.common.action_chains import ActionChains as Ac
 from test_data import td_login
+from selenium.webdriver.common.by import By
 
 
 class BasePage(object):
@@ -84,13 +85,32 @@ class BasePage(object):
         except Exception as e:
             print u'尚未定位到该元素！', e
 
+    def is_clickable(self, loc):  # 页面是否可见，若是，返回元素对象；反之，返回False
+        try:
+            return WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(loc))
+        except Exception as e:
+            print u'目前无法点击该元素！', e
+            return False
+
     def open_the_menu(self, parent, node=''):  # 点击页面左侧菜单
+        action = Ac(self.driver)
+        div = self.find_element(*(By.XPATH, "//*[@id='side-menu']/li[13]"))
         try:
             if not node:
                 self.find_element(*(loc_base.menu[parent])).click()
                 return self.find_element(*loc_base.tab[parent][parent]).text
             else:
                 self.find_element(*(loc_base.menu[parent][u'父菜单'])).click()  # 展开父菜单
+                # print parent, node, self.is_visible(loc_base.menu[parent][node])
+                # scroll_bar = self.find_element(*(By.XPATH, "//*[@id='wrapper']/nav/div[2]/div[2]"))
+                if not self.is_clickable(loc_base.menu[parent][node]):
+                    # action.move_to_element(div)
+                    # target = self.find_element(*loc_base.menu[parent][node])
+                    js = "document.getElementByClassName('slimScrollBar').display = block"
+                    self.driver.execute_script(js)
+                    print self.is_visible((By.XPATH, "//*[@id='wrapper']/nav/div[2]/div[2]"))
+                    scroll_bar = self.find_element(*(By.XPATH, "//*[@id='wrapper']/nav/div[2]/div[2]"))
+                    action.move_to_element(scroll_bar).drag_and_drop(scroll_bar, 10, 10)
                 self.find_element(*(loc_base.menu[parent][node])).click()  # 打开子菜单
                 self.find_element(*(loc_base.menu[parent][u'父菜单'])).click()  # 收起子菜单（这一步不可少）
                 return self.find_element(*loc_base.tab[node][node]).text
