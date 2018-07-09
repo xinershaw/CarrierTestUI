@@ -294,7 +294,7 @@ tab = {
 
 frame = {
     u'首页': (By.XPATH, "//iframe[contains(@data-id,'/Home/Main')]"),
-    u'订单管理':(By.XPATH, "//iframe[contains(@data-id,'/TransitOrder/Index')]"),
+    u'订单管理': (By.XPATH, "//iframe[contains(@data-id,'/TransitOrder/Index')]"),
     u'收货派车': (By.XPATH, "//iframe[contains(@data-id,'/SendCar/Index')]"),
     u'派单': (By.XPATH, "//iframe[contains(@data-id,'/TransitSendOrder/Index')]"),
     u'到货分理': (By.XPATH, "//iframe[contains(@data-id,'/ArriveOrder/Index')]"),

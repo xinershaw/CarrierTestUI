@@ -3,12 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ef923482-b0d3-49b3-8274-74871e2e6906" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/draft_web.py" beforeDir="false" afterPath="$PROJECT_DIR$/draft_web.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/base.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/element_location/loc_base.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/element_location/loc_base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_test_cases.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_test_cases.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_case/test_p/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_case/test_p/test_menu.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/search_form.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/search_form.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,13 +15,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="base.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="94" selection-start-line="94" selection-end-line="94" />
+            <state relative-caret-position="805">
+              <caret line="77" column="89" lean-forward="true" selection-start-line="77" selection-start-column="89" selection-end-line="77" selection-end-column="89" />
               <folding>
                 <element signature="e#77#134#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="arrive_order_add.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/order_manage/arrive_order_add.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="593">
+              <caret line="52" column="12" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="42" />
+              <folding>
+                <element signature="e#83#114#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_ar_order_add.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test_case/arrive_order/test_ar_order_add.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="505">
+              <caret line="36" column="19" lean-forward="true" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
+              <folding>
+                <element signature="e#83#98#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -34,8 +54,8 @@
       <file leaf-file-name="test_menu.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_case/test_menu.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
-              <caret line="23" column="38" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
+            <state relative-caret-position="275">
+              <caret line="30" column="28" lean-forward="true" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
               <folding>
                 <element signature="e#77#92#0" expanded="true" />
               </folding>
@@ -43,11 +63,44 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="loc_base.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="loc_base.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/element_location/loc_base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="91" column="47" lean-forward="true" selection-start-line="91" selection-start-column="47" selection-end-line="91" selection-end-column="47" />
+            <state relative-caret-position="2127">
+              <caret line="100" selection-start-line="100" selection-end-line="101" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="loc_arrive_order.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/element_location/loc_arrive_order.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="184">
+              <caret line="36" column="75" lean-forward="true" selection-start-line="36" selection-start-column="75" selection-end-line="36" selection-end-column="75" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="arrive_order.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/order_manage/arrive_order.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="20" column="30" lean-forward="true" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+              <folding>
+                <element signature="e#77#108#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="search_form.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/search_form.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="805">
+              <caret line="35" column="46" lean-forward="true" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
+              <folding>
+                <element signature="e#77#108#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -70,6 +123,12 @@
       <find>//a</find>
       <find>td_login</find>
       <find>货物类别</find>
+      <find>装卸费成本规则</find>
+      <find>代收货款</find>
+      <find>'</find>
+      <find>收货派车</find>
+      <find>fr</find>
+      <find>tab</find>
     </findStrings>
     <replaceStrings>
       <replace>//iframe</replace>
@@ -96,17 +155,17 @@
         <option value="$PROJECT_DIR$/test_data/login.py" />
         <option value="$PROJECT_DIR$/pages/element_location/page_e_location.py" />
         <option value="$PROJECT_DIR$/test_data/td_arrive_order.py" />
-        <option value="$PROJECT_DIR$/test_case/arrive_order/test_ar_order_add.py" />
-        <option value="$PROJECT_DIR$/pages/search_form.py" />
-        <option value="$PROJECT_DIR$/pages/order_manage/arrive_order.py" />
         <option value="$PROJECT_DIR$/pages/element_location/loc_arrive_order.py" />
         <option value="$PROJECT_DIR$/pages/order_manage/arrive_order_add.py" />
-        <option value="$PROJECT_DIR$/test_data/td_login.py" />
         <option value="$PROJECT_DIR$/pages/open_menus.py" />
         <option value="$PROJECT_DIR$/draft_web.py" />
         <option value="$PROJECT_DIR$/run_test_cases.py" />
-        <option value="$PROJECT_DIR$/test_case/test_menu.py" />
+        <option value="$PROJECT_DIR$/test_data/td_login.py" />
         <option value="$PROJECT_DIR$/pages/base.py" />
+        <option value="$PROJECT_DIR$/test_case/test_menu.py" />
+        <option value="$PROJECT_DIR$/pages/order_manage/arrive_order.py" />
+        <option value="$PROJECT_DIR$/test_case/arrive_order/test_ar_order_add.py" />
+        <option value="$PROJECT_DIR$/pages/search_form.py" />
         <option value="$PROJECT_DIR$/pages/element_location/loc_base.py" />
       </list>
     </option>
@@ -201,7 +260,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.draft_web">
+  <component name="RunManager" selected="Python.CarrierTestUI">
     <configuration name="CarrierTestUI" type="PythonConfigurationType" factoryName="Python">
       <module name="CarrierTestUI" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -385,7 +444,42 @@
       <option name="project" value="LOCAL" />
       <updated>1530698510813</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="1、base中的“from test_data import td_login”会报错“ ImportError: cannot import name”-----已找到原因，因为在test_case同路径下一有一个无用忘记删除的文件“test_data”,删除后，没有再报错！&#10;2、解决test_menu运行过程中出现的各类问题，目前正在解决某些菜单需要向下拉动滚动条才可见的问题；&#10;ps. 昨晚睡太晚，感冒，咳嗽，打瞌睡，今天效率真的很低！">
+      <created>1530782380012</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1530782380012</updated>
+    </task>
+    <task id="LOCAL-00018" summary="1、解决统计报表最下面几张报表必须要拖动鼠标滚动条之后才能可见且点击的问题">
+      <created>1530868753624</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1530868753624</updated>
+    </task>
+    <task id="LOCAL-00019" summary="1、新增测试用例test_menu">
+      <created>1531102731559</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1531102731559</updated>
+    </task>
+    <task id="LOCAL-00020" summary="1、完善open_menu方法；（菜单div中的滚动条，你妹的！）&#10;2、修改loc_base的语法错误；">
+      <created>1531121599841</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1531121599841</updated>
+    </task>
+    <task id="LOCAL-00021" summary="1、修复search_form获取第一行运单号的bug！  你大爷！">
+      <created>1531129539989</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1531129539989</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TodoView">
@@ -399,17 +493,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="66" y="-8" width="1862" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.123903506" />
       <window_info anchor="bottom" id="TODO" order="12" sideWeight="0.4994698" weight="0.32922733" />
-      <window_info anchor="bottom" id="Event Log" order="15" sideWeight="0.18804824" side_tool="true" visible="true" weight="0.32392895" />
+      <window_info anchor="bottom" id="Event Log" order="15" sideWeight="0.087171055" side_tool="true" visible="true" weight="0.30512017" />
       <window_info anchor="bottom" id="Version Control" order="13" sideWeight="0.49835527" weight="0.3291536" />
       <window_info anchor="bottom" id="Python Console" order="16" sideWeight="0.49780703" weight="0.3291536" />
-      <window_info anchor="bottom" id="Run" order="4" sideWeight="0.9144737" weight="0.30512017" />
+      <window_info active="true" anchor="bottom" id="Run" order="4" sideWeight="0.9128289" visible="true" weight="0.30512017" />
       <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="14" sideWeight="0.49893954" weight="0.32922733" />
       <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Debug" order="6" sideWeight="0.81195176" visible="true" weight="0.32392895" />
+      <window_info anchor="bottom" id="Debug" order="6" sideWeight="0.8097588" weight="0.3740857" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
@@ -449,7 +544,12 @@
     <MESSAGE value="1、完善新增到货分理保存后、到货分理列表查询后的显示等待；&#10;2、完善searchform的single查询。" />
     <MESSAGE value="完成菜单menu以及所有tab页的loc" />
     <MESSAGE value="正在写打开所有tab页的测试用例，今天遇到的问题是：&#10;test_menu如果直接放在test_case下，base中的“from test_data import td_login”会报错“ ImportError: cannot import name”；&#10;若是放在test_case下的二级package下，才不会报以上的错误；&#10;明天继续研究上述两种方法的具体差别" />
-    <option name="LAST_COMMIT_MESSAGE" value="正在写打开所有tab页的测试用例，今天遇到的问题是：&#10;test_menu如果直接放在test_case下，base中的“from test_data import td_login”会报错“ ImportError: cannot import name”；&#10;若是放在test_case下的二级package下，才不会报以上的错误；&#10;明天继续研究上述两种方法的具体差别" />
+    <MESSAGE value="1、base中的“from test_data import td_login”会报错“ ImportError: cannot import name”-----已找到原因，因为在test_case同路径下一有一个无用忘记删除的文件“test_data”,删除后，没有再报错！&#10;2、解决test_menu运行过程中出现的各类问题，目前正在解决某些菜单需要向下拉动滚动条才可见的问题；&#10;ps. 昨晚睡太晚，感冒，咳嗽，打瞌睡，今天效率真的很低！" />
+    <MESSAGE value="1、解决统计报表最下面几张报表必须要拖动鼠标滚动条之后才能可见且点击的问题" />
+    <MESSAGE value="1、新增测试用例test_menu" />
+    <MESSAGE value="1、完善open_menu方法；（菜单div中的滚动条，你妹的！）&#10;2、修改loc_base的语法错误；" />
+    <MESSAGE value="1、修复search_form获取第一行运单号的bug！  你大爷！" />
+    <option name="LAST_COMMIT_MESSAGE" value="1、修复search_form获取第一行运单号的bug！  你大爷！" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -460,44 +560,9 @@
           <option name="timeStamp" value="144" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/test_case/arrive_order/test_ar_order_add.py</url>
-          <line>8</line>
-          <option name="timeStamp" value="212" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/test_case/arrive_order/test_ar_order_add.py</url>
-          <line>9</line>
-          <option name="timeStamp" value="214" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/run_test_cases.py</url>
           <line>6</line>
           <option name="timeStamp" value="225" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pages/base.py</url>
-          <line>97</line>
-          <option name="timeStamp" value="254" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pages/base.py</url>
-          <line>57</line>
-          <option name="timeStamp" value="258" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pages/base.py</url>
-          <line>92</line>
-          <option name="timeStamp" value="259" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pages/base.py</url>
-          <line>93</line>
-          <option name="timeStamp" value="260" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pages/base.py</url>
-          <line>94</line>
-          <option name="timeStamp" value="261" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -510,7 +575,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="262" />
+      <option name="time" value="284" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -783,41 +848,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/element_location/loc_arrive_order.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="19" column="43" lean-forward="true" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/search_form.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_data/td_login.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/order_manage/arrive_order.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67">
-          <caret line="8" column="62" lean-forward="true" selection-start-line="8" selection-start-column="62" selection-end-line="8" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/order_manage/arrive_order_add.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_data/td_arrive_order.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="552">
@@ -834,16 +864,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test_case/test_p/test_menu.py" />
-    <entry file="file://$PROJECT_DIR$/test_case/arrive_order/test_ar_order_add.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="805">
-          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
-          <folding>
-            <element signature="e#83#98#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/draft_web.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -871,30 +891,84 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/element_location/loc_base.py">
+    <entry file="file://$PROJECT_DIR$/test_data/td_login.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="91" column="47" lean-forward="true" selection-start-line="91" selection-start-column="47" selection-end-line="91" selection-end-column="47" />
+        <state relative-caret-position="299">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test_case/test_menu.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="23" column="38" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
+        <state relative-caret-position="275">
+          <caret line="30" column="28" lean-forward="true" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
           <folding>
             <element signature="e#77#92#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pages/order_manage/arrive_order.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="20" column="30" lean-forward="true" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+          <folding>
+            <element signature="e#77#108#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/order_manage/arrive_order_add.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="593">
+          <caret line="52" column="12" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="42" />
+          <folding>
+            <element signature="e#83#114#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_case/arrive_order/test_ar_order_add.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="505">
+          <caret line="36" column="19" lean-forward="true" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
+          <folding>
+            <element signature="e#83#98#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/search_form.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="805">
+          <caret line="35" column="46" lean-forward="true" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
+          <folding>
+            <element signature="e#77#108#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/element_location/loc_arrive_order.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="36" column="75" lean-forward="true" selection-start-line="36" selection-start-column="75" selection-end-line="36" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pages/base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="94" selection-start-line="94" selection-end-line="94" />
+        <state relative-caret-position="805">
+          <caret line="77" column="89" lean-forward="true" selection-start-line="77" selection-start-column="89" selection-end-line="77" selection-end-column="89" />
           <folding>
             <element signature="e#77#134#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/element_location/loc_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2127">
+          <caret line="100" selection-start-line="100" selection-end-line="101" />
         </state>
       </provider>
     </entry>

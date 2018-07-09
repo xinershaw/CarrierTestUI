@@ -5,6 +5,7 @@ Created on 2018年5月15日
 Project:......
 """
 from pages.base import BasePage
+from selenium.common.exceptions import StaleElementReferenceException as SERE
 
 
 class SearchForm(BasePage):
@@ -26,7 +27,10 @@ class SearchForm(BasePage):
         heads = []
         values = []
         for i in range(1, len(self.find_elements(*loc[u'列表'][u'表头']))):
-            heads.append(self.find_elements(*loc[u'列表'][u'表头'])[i].text)
+            try:
+                heads.append(self.find_elements(*loc[u'列表'][u'表头'])[i].text)
+            except SERE:
+                heads.append(self.find_elements(*loc[u'列表'][u'表头'])[i].text)
         for i in range(0, len(self.find_elements(*loc[u'列表'][u'第一行所有数据']))):
             values.append(self.find_elements(*loc[u'列表'][u'第一行所有数据'])[i].text)
         for head, value in zip(heads, values):
