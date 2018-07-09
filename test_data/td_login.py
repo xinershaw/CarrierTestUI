@@ -9,5 +9,5 @@ Project:......
 login = {
     'url': 'http://cy.tuluo56.com/Home/Login',
     u'用户名': '15387672086',
-    u'密码': '111111'
+    u'密码': 'kill1986'
     }
