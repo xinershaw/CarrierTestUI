@@ -13,25 +13,24 @@ class SearchForm(BasePage):
         self.click(loc[u'搜索'])
 
     def single_query(self, item_input, item_name, **loc):  # 单一查询 loc是指定位器中的字典变量
-        if item_name in loc['select']:
-            self.select_value(item_input, loc['select'][item_name])
-        elif item_name in loc['input_search']:
-            self.input_search(item_input, **loc['input_search'][item_name])
+        if item_name in loc[u'查询条件']['select']:
+            self.select_value(item_input, *loc[u'查询条件']['select'][item_name])
+        elif item_name in loc[u'查询条件']['input_search']:
+            self.input_search(item_input, **loc[u'查询条件']['input_search'][item_name])
         else:
-            self.send_keys(item_input, loc['input'][item_name])
+            self.send_keys(item_input, *loc[u'查询条件']['input'][item_name])
         self.click(loc[u'搜索'])
 
     def get_line1(self, **loc):  # 到货分理列表，获取列表第一行数据的运单号 loc是指定位器中的字典变量
         line1 = dict()
         heads = []
         values = []
-        heads_o = self.find_elements(*loc[u'列表'][u'表头'])
-        for i in range(1, len(heads_o)):
-            heads.append(heads_o[i].text)
-        for o in self.find_elements(*loc[u'列表'][u'第一行所有数据']):
-            values.append(o.text)
+        for i in range(1, len(self.find_elements(*loc[u'列表'][u'表头']))):
+            heads.append(self.find_elements(*loc[u'列表'][u'表头'])[i].text)
+        for i in range(0, len(self.find_elements(*loc[u'列表'][u'第一行所有数据']))):
+            values.append(self.find_elements(*loc[u'列表'][u'第一行所有数据'])[i].text)
         for head, value in zip(heads, values):
-                line1.update({head: value})
+            line1.update({head: value})
         return line1
 
 

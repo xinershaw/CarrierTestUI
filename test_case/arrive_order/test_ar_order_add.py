@@ -20,7 +20,9 @@ class CaseArOrderAdd(unittest.TestCase):
         page = ar_add.ArOrderAdd(self.driver)
         order_code = page.save_submit(**td.ar_add_order1)
         time.sleep(15)  # 保存耗时较长，因此强制等待
+        # order_code = '1807090004'
         page_list = ar.ArOrder(self.driver)
+        # page_list.open_page()
         order_code_list = page_list.query_order_code(order_code)
         try:  # 保存后，比较列表页面最新一条记录的运单号与录入时的运单号是否一致
             self.assertEqual(order_code, int(order_code_list))
