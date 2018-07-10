@@ -5,6 +5,7 @@ Created on 2018年5月29日
 Project:新增到货分理页的操作方法
 """
 from pages.base import BasePage
+from pages.menu import Menu
 from pages.element_location import loc_arrive_order as loc
 from pages.element_location import loc_base as loc_base
 from pages import get_data_DB as Db
@@ -18,7 +19,8 @@ from selenium.webdriver.support import expected_conditions as EC
 class ArOrderAdd(BasePage):
     def open_page_add(self):
         self.login()  # 登录
-        self.open_the_menu(u'运单', u'到货分理')  # 从菜单打开到货分理列表页
+        menu = Menu(self.driver)
+        menu.open_the_menu(u'运单', u'到货分理')  # 从菜单打开到货分理列表页
         # 切换至到货分理frame
         self.to_frame(u'到货分理')
         time.sleep(3)  # 强制等待页面（到货分理列表页）加载，否则新增到货分理按钮无法点击

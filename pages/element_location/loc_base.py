@@ -89,7 +89,8 @@ menu = {
         u'发站收款报表': (By.LINK_TEXT, u'发站收款报表'),
         u'到付款收款报表': (By.LINK_TEXT, u'到付款收款报表'),
         u'干线成本统计表': (By.LINK_TEXT, u'干线成本统计表'),
-        u'其他成本统计表': (By.LINK_TEXT, u'其他成本统计表')}
+        u'其他成本统计表': (By.LINK_TEXT, u'其他成本统计表')
+        }
     }
 
 tab = {

@@ -48,7 +48,7 @@ class BasePage(object):
 
     def find_elements(self, *loc):
         try:
-            WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located(loc))
+            WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(loc))
             return self.driver.find_elements(*loc)
         except NoSuchE as e:
             print u"页面中未找到这些元素", e
@@ -79,37 +79,19 @@ class BasePage(object):
         except NoSuchE as e:
             print u'点击该元素失败', e
 
-    def is_visible(self, loc):  # 页面是否可见，若是，返回元素对象；反之，返回False
+    def is_visible(self, loc):  # 元素是否可见，若是，返回元素对象；反之，返回False
         try:
-            return WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(loc))
+            return WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located(loc))
         except Exception as e:
-            print u'尚未定位到该元素！', e
+            # print u'尚未定位到该元素！', e
+            return False
 
-    def is_clickable(self, loc):  # 页面是否可见，若是，返回元素对象；反之，返回False
+    def is_clickable(self, loc):  # 元素是否可见，若是，返回元素对象；反之，返回False
         try:
-            return WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(loc))
+            return WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable(loc))
         except Exception as e:
             # print u'目前无法点击该元素！', e
             return False
-
-    def open_the_menu(self, parent, node=''):  # 点击页面左侧菜单
-        parent_objs = self.find_elements(*(By.XPATH, "//*[@id='side-menu']/li/a"))
-        try:
-            if not node:
-                if not self.is_clickable(loc_base.menu[parent]):  # 如果菜单不可点击，则拖动至当前子菜单的最后一个
-                    self.driver.execute_script("arguments[0].scrollIntoView();", parent_objs[-1])
-                self.find_element(*(loc_base.menu[parent])).click()
-                return self.find_element(*loc_base.tab[parent][parent]).text  # 返回tab名称
-            else:
-                self.find_element(*(loc_base.menu[parent][u'父菜单'])).click()  # 展开父菜单
-                son_objs = self.find_elements(*(By.XPATH, "//li[@class='active']/ul/li/a"))
-                if not self.is_clickable(loc_base.menu[parent][node]):  # 如果菜单不可点击，则拖动至当前子菜单的最后一个
-                    self.driver.execute_script("arguments[0].scrollIntoView();", son_objs[-1])
-                self.find_element(*(loc_base.menu[parent][node])).click()  # 打开子菜单
-                self.find_element(*(loc_base.menu[parent][u'父菜单'])).click()  # 收起子菜单（这一步不可少）
-                return self.find_element(*loc_base.tab[node][node]).text  # 返回tab名称
-        except Exception as e:
-            print u'打开菜单失败！', parent, node, e
 
     def close_tab(self, tab):  # 关闭选项卡
         try:
