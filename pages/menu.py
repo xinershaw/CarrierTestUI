@@ -38,9 +38,6 @@ class Menu(BasePage):
 
     def open_the_menu(self, parent, son=''):  # 点击页面左侧菜单
         WebDriverWait(self.driver, 3).until(EC.visibility_of_element_located((By.ID, 'side-menu')))
-        # time.sleep(5)
-        # print self.find_element(*loc_base.menu[parent][u'父菜单']).is_displayed()
-        # print self.find_element(*(By.CLASS_NAME, 'sidebar-collapse')).location
         try:
             if not son:  # 没有子菜单
                 self.pre_parent_click(loc_base.menu[parent])
