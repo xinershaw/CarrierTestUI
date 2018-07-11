@@ -70,13 +70,17 @@ class ArOrderAdd(BasePage):
     def input_who_info(self, **test_data):
         self.input_search(test_data[u'发站'], **loc.ar_add_order['input_search'][u'发站'])
         self.input_search(test_data[u'到站'], **loc.ar_add_order['input_search'][u'到站'])
-        td = self.sort_input_items(u'发货人', u'发货人手机号', u'发货人座机号', u'收货人', u'收货人手机号',
-                                    u'收货人座机号', **test_data)
+        self.driver.execute_script("document.getElementById('ui-id-1').style.display = 'none';")
+        self.send_keys(test_data[u'发货人'], *loc.ar_add_order['input'][u'发货人'])
+        self.driver.execute_script("document.getElementById('ui-id-2').style.display = 'none';")
+        self.send_keys(test_data[u'收货人'], *loc.ar_add_order['input'][u'收货人'])
+        td = self.sort_input_items(u'发货人手机号', u'发货人座机号', u'收货人手机号',u'收货人座机号',
+                                   **test_data)
         self.input_items(td.items(), **loc.ar_add_order)
 
     def input_goods_info(self, **test_data):
         td = self.sort_input_items(u'货物名称', u'箱型', u'箱数', u'重量', u'体积', u'货物包装', u'件数',u'车型',
-                                    **test_data)
+                                   **test_data)
         self.input_items(td.items(), **loc.ar_add_order)
 
     def input_other_info(self, **test_data):

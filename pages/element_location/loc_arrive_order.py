@@ -66,11 +66,11 @@ ar_add_order = {
             u'客户名称': (By.ID, 'UserName'),
             u'发站': {  # 固定格式
                 'input': (By.ID, 'StartPlaceName'),
-                'item': (By.XPATH, "//*[@id='shipperForm']/div[1]/div/div/ul/table/tbody/tr[1]")
+                'item': (By.XPATH, "//*[@id='shipperForm1']/div[1]/div/div/ul/table/tbody/tr[1]")
                 },
             u'到站': {  # 固定格式
                 'input': (By.ID, 'EndPlaceName'),
-                'item': (By.XPATH, "//*[@id='receiveForm']/div[1]/div/div/ul/table/tbody/tr[1]")
+                'item': (By.XPATH, "//*[@id='shipperForm1']/div[2]/div/div/ul/table/tbody/tr[1]")
                 },
             u'收货人地址': (By.ID, ''),
             u'货物名称': {  # 固定格式
@@ -78,6 +78,7 @@ ar_add_order = {
                 'item': (By.XPATH, "//*[@id='sel']/table/tbody/tr[1]")
                 },
     },
+    u'发货地址': (By.ID, "//*[@id='shipperForm']/div[4]/div/span"),
     u'运单号': (By.ID, 'OrderCode'),
     u'到货时间': {
         'input_date': (By.ID, 'Estimatedtime'),
