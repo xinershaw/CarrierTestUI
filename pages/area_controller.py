@@ -6,8 +6,6 @@ Project: 地区控件
 """
 from pages.base import BasePage
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 
 class AreaController(BasePage):
@@ -21,21 +19,22 @@ class AreaController(BasePage):
         # 弹出地区控件的触发事件是input的focus，但被下面的span干扰，无法通过点击实现，只能通过js聚焦实现
         if 'id' in input_loc[0]:  # 如果地区控件是通过id定位,
             js = "document.getElementById('" + input_loc[1] + "').focus()"
-            # js = "document.getElementById('shipperCity').focus()"
         else:  # 如果地区控件是通过name定位
             js = "document.getElementsByName('" + input_loc[1] + "')[0].focus()"
         self.driver.execute_script(js)  # 弹出地区控件
-        try:
-            WebDriverWait(self.driver, 3).until(EC.visibility_of_element_located((By.CLASS_NAME, 'city-select-wrap')))
-        except BaseException as e:
-            print '打开地区控件失败！', e
 
-    def input_area(self, pro, city, dis, county, *input_loc):
+    def input_area(self, *input_loc, **test_data):
         self.open_controller(*input_loc)
-        self.click_area((By.XPATH, "//a[@data-count='province']"), pro)
-        self.click_area((By.XPATH, "//a[@data-count='city']"), city)
-        self.click_area((By.XPATH, "//a[@data-count='district']"), dis)
-        self.click_area((By.XPATH, "//a[@data-count='county']"), county)
+        # div_xpath是由于一个页面包含多个地区控件时，能区分各个控件的省市区乡tab的xpath
+        div_xpath = "//div[@class='city-picker-dropdown' and contains(@style,'block')]/div/div/a[@data-count='"
+        try:
+            for i in ['province', 'city', 'district', 'county']:
+                try:
+                    self.click_area((By.XPATH, div_xpath + i + "']"), test_data[i])
+                except KeyError:  # 有的控件不包含county,这种情况下，testdata不设置键值对'county'
+                    continue
+        except BaseException as e:
+            print input_loc, '地区控件选择地区失败！', e
 
     def input_clear(self, *input_loc):  # 地区控件中的清空按钮
         self.open_controller(*input_loc)

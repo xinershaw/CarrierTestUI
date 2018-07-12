@@ -72,13 +72,14 @@ ar_add_order = {
                 'input': (By.ID, 'EndPlaceName'),
                 'item': (By.XPATH, "//*[@id='shipperForm1']/div[2]/div/div/ul/table/tbody/tr[1]")
                 },
-            u'收货人地址': (By.ID, ''),
+            u'收货详细地址': (By.ID, ''),
             u'货物名称': {  # 固定格式
                 'input': (By.ID, 'CargoTypeId'),
                 'item': (By.XPATH, "//*[@id='sel']/table/tbody/tr[1]")
                 },
     },
-    u'发货地址': (By.ID, "shipperCity"),
+    u'发货地址': (By.ID, "shipperCity"),  # 地区控件只能用id或者name定位
+    u'收货地址': (By.ID, "receiverCity"),  # 地区控件只能用id或者name定位
     u'运单号': (By.ID, 'OrderCode'),
     u'到货时间': {
         'input_date': (By.ID, 'Estimatedtime'),

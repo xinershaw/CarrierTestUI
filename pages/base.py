@@ -84,14 +84,14 @@ class BasePage(object):
             return WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located(loc))
         except Exception as e:
             # print u'尚未定位到该元素！', e
-            return False
+            return False, e
 
     def is_clickable(self, loc):  # 元素是否可见，若是，返回元素对象；反之，返回False
         try:
             return WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable(loc))
         except Exception as e:
             # print u'目前无法点击该元素！', e
-            return False
+            return False, e
 
     def close_tab(self, tab):  # 关闭选项卡
         try:
