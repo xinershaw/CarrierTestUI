@@ -24,6 +24,7 @@ class CaseDraft(unittest.TestCase):
         page.open_page_add()  # 从菜单打开到货分理列表页
         area_ctroller = area_c(self.driver)
         area_ctroller.input_area(u'四川', u'成都', u'郫县', u'犀浦', *loc_a.ar_add_order[u'发货地址'])
+        area_ctroller.input_clear(*loc_a.ar_add_order[u'发货地址'])
 
     def tearDown(self):
         self.driver.quit()

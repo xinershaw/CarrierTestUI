@@ -78,7 +78,7 @@ ar_add_order = {
                 'item': (By.XPATH, "//*[@id='sel']/table/tbody/tr[1]")
                 },
     },
-    u'发货地址': (By.ID, "//*[@id='shipperForm']/div[4]/div/span"),
+    u'发货地址': (By.ID, "shipperCity"),
     u'运单号': (By.ID, 'OrderCode'),
     u'到货时间': {
         'input_date': (By.ID, 'Estimatedtime'),
