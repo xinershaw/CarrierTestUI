@@ -109,14 +109,14 @@ class BasePage(object):
 
     def sort_input_items(self, *items, **test_data):  # 挑选要录入的文本框(items),test_data指test_data路径下的测试数据
         td = dict()
-        for i in items:
+        for i in items:  # item字段名
             try:
                 td.update({i: test_data[i]})
             except KeyError:
                 continue
         return td
 
-    def input_items(self, *test_data, **locators):
+    def input_items(self, *test_data, **locators):  # 批量录入form中的各类字段
         """ locators={
                 input:{
                 item1:[value, loc],
@@ -143,5 +143,9 @@ class BasePage(object):
                 self.input_search(t[1], **locators['input_search'][t[0]])
             else:
                 continue
+
+    def scroll_into_loc(self, loc):  # 拖动下拉条至loc的所在位置
+        self.driver.execute_script("arguments[0].scrollIntoView();", self.find_element(*loc))
+
 
 
