@@ -29,8 +29,8 @@
       <file leaf-file-name="menu.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/menu.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="27">
-              <caret line="38" column="27" lean-forward="true" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
+            <state relative-caret-position="441">
+              <caret line="74" column="12" lean-forward="true" selection-start-line="74" selection-start-column="12" selection-end-line="74" selection-end-column="12" />
               <folding>
                 <element signature="e#77#108#0" expanded="true" />
               </folding>
@@ -479,7 +479,14 @@
       <option name="project" value="LOCAL" />
       <updated>1532337919274</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="继续优化menu的各个方法（还需继续调试）；">
+      <created>1532338308537</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1532338308537</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TodoView">
@@ -528,7 +535,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="1、fix:新增到货分理按钮无法点击，办法：time.asleep;&#10;2、fix:新增到货分理页，日期控件无法点击，办法同上！&#10;P.S:一直在瞎弄，其实time.asleep完爆之前所有的想法，我又笨到了新境界！" />
     <MESSAGE value="1、完成录入新增到货分理页面所有必填项的封装input_all；&#10;2、新增了该页面的测试数据；&#10;P.S:重量体积以及两个金额字段遇到了怪异的问题，好头大！再接再厉吧！" />
     <MESSAGE value="1、完成录入重量体积；&#10;2、两个装卸费未完待续；&#10;P.S:两个装卸费始终会重置为0.00，真是头大！！" />
     <MESSAGE value="1、两个装卸费算是搞定了！！！这个花了太多时间！&#10;2、到货分理可以提交订单了！&#10;P.S: js影响到脚本时，应该多多观察细节，细节决定脚本的成败！" />
@@ -553,7 +559,8 @@
     <MESSAGE value="1、地区控件选择地区、清空功能已实现，暂未发现其他问题。" />
     <MESSAGE value="地区控件bug修复：&#10;1、同一页面存在多个地区控件时，各控件省市区tab的xpath相同无法区分，通过div来区分；&#10;2、某些页面的该控件可能不包含couny,通过except keyerror 来解决（有待验证）。" />
     <MESSAGE value="优化menu的各个方法（还未调试）" />
-    <option name="LAST_COMMIT_MESSAGE" value="优化menu的各个方法（还未调试）" />
+    <MESSAGE value="继续优化menu的各个方法（还需继续调试）；" />
+    <option name="LAST_COMMIT_MESSAGE" value="继续优化menu的各个方法（还需继续调试）；" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -976,8 +983,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/menu.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="38" column="27" lean-forward="true" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
+        <state relative-caret-position="441">
+          <caret line="74" column="12" lean-forward="true" selection-start-line="74" selection-start-column="12" selection-end-line="74" selection-end-column="12" />
           <folding>
             <element signature="e#77#108#0" expanded="true" />
           </folding>
