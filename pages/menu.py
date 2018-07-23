@@ -29,21 +29,46 @@ class Menu(BasePage):
         except KeyError:
             return False
 
+    def is_dink(self, parent):  # 是否有子菜单
+        if isinstance(loc_base.menu[parent], dict):
+            return False
+        else:
+            return True
+
+    def is_parent_visible(self, parent):  # 父菜单是否可见
+        if self.is_dink(parent):
+            return self.is_visible(loc_base.menu[parent])
+        else:
+            return self.is_visible(loc_base.menu[parent][u'父菜单'])
+
     def click_parent(self, parent):
         x_str = "//a[@title='" + parent + "']/.."
         if self.find_element(*(By.XPATH, x_str)).get_attribute('class') != 'active':
-            if not self.is_visible(loc_base.menu[parent][u'父菜单']):
-                self.scroll_into_loc((By.XPATH, "//*[@id='side-menu']/li[last()]"))
-            if parent in [u'订单', u'异常及理赔'] and self.is_visible((By.CLASS_NAME, 'r label label-info')):
+            info_count_loc = (By.XPATH, "//span[@class='r label label-info']")
+            if parent in [u'订单', u'异常及理赔'] and self.is_visible(info_count_loc):
                 self.driver.execute_script(self.clear_label_info_js('r label label-info'))
-            self.click(loc_base.menu[parent][u'父菜单'])
+            if not self.is_parent_visible(parent):
+                link_obj = self.find_elements(*(By.XPATH, "//*[@id='side-menu']/li"))
+                self.scroll_into_loc(link_obj[-1])
+            try:
+                if not self.is_dink(parent):
+                    self.click(loc_base.menu[parent][u'父菜单'])
+                else:
+                    self.click(loc_base.menu[parent])
+            except BaseException as e:
+                print u'打开父菜单失败！', parent, e
 
     def click_son(self, parent, son):
-        if not self.is_visible(loc_base.menu[parent][son]):
-            self.scroll_into_loc((By.XPATH, "//li[@class='active']/ul/li[last()]/a"))
-        if parent in [u'订单', u'异常及理赔'] and self.is_visible((By.CLASS_NAME, 'r label label-info pull-right')):
+        info_count_loc = (By.XPATH, "//span[@class='r label label-info pull-right']")
+        if parent in [u'订单', u'异常及理赔'] and self.is_visible(info_count_loc):
             self.driver.execute_script(self.clear_label_info_js('r label label-info pull-right'))
-        self.click(loc_base.menu[parent][son])  # 打开子菜单
+        if not self.is_visible(loc_base.menu[parent][son]):
+            link_obj = self.find_elements(*(By.XPATH, "//li[@class='active']/ul/li/a"))
+            self.scroll_into_loc(link_obj[-1])
+        try:
+            self.click(loc_base.menu[parent][son])  # 打开子菜单
+        except BaseException as e:
+            print u'打开子菜单失败', son, e
 
     def open_the_menu(self, parent, son=''):  # 点击页面左侧菜单
         WebDriverWait(self.driver, 3).until(EC.visibility_of_element_located((By.ID, 'side-menu')))
@@ -54,8 +79,7 @@ class Menu(BasePage):
             else:  # 存在子菜单
                 self.click_parent(parent)
                 self.click_son(parent, son)
-                # self.click_parent(parent)
-            return self.find_element(*loc_base.tab[son][son]).text  # 返回tab名称
+                return self.find_element(*loc_base.tab[son][son]).text  # 返回tab名称
         except BaseException as e:
             print u'打开菜单失败！', parent, son, e
 

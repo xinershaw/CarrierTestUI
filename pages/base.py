@@ -84,14 +84,14 @@ class BasePage(object):
             return WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located(loc))
         except Exception as e:
             # print u'尚未定位到该元素！', e
-            return False, e
+            return False
 
     def is_clickable(self, loc):  # 元素是否可见，若是，返回元素对象；反之，返回False
         try:
             return WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable(loc))
         except Exception as e:
             # print u'目前无法点击该元素！', e
-            return False, e
+            return False
 
     def close_tab(self, tab):  # 关闭选项卡
         try:
@@ -144,8 +144,11 @@ class BasePage(object):
             else:
                 continue
 
-    def scroll_into_loc(self, loc):  # 拖动下拉条至loc的所在位置
-        self.driver.execute_script("arguments[0].scrollIntoView();", self.find_element(*loc))
+    def scroll_into_loc(self, loc_obj):  # 拖动下拉条至loc的所在位置
+        try:
+            self.driver.execute_script("arguments[0].scrollIntoView();", loc_obj)
+        except BaseException as e:
+            print u'拖动滚动条到指定位置失败！', e
 
 
 

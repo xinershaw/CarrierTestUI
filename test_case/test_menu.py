@@ -22,7 +22,7 @@ class CaseMenu(unittest.TestCase):
         menus = loc_base.menu
         for parent in menus:
             # 如果是dict，说明有子菜单,反之则没有子菜单
-            if isinstance(menus[parent], dict):
+            if not page.is_dink(parent):
                 for son in menus[parent]:
                     if son != u'父菜单':
                         tab_name = page.open_the_menu(parent, son)  # 打开菜单
