@@ -12,7 +12,8 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class Menu(BasePage):
-    def clear_label_info_js(self, class_name):
+    def clear_info_count(self, class_name):
+        # 待处理记录条数会遮挡菜单，导致无法点击，因此点击前需要先将记录条数的display修改为none
         list_str = [
             "var labels = document.getElementsByClassName('",
             class_name,
@@ -21,7 +22,8 @@ class Menu(BasePage):
             class_name,
             "')[i].style.display = 'none';}"
         ]
-        return ''.join(list_str)
+        self.driver.execute_script(''.join(list_str))
+        # return ''.join(list_str)
 
     def is_parent(self, menu_name):
         try:
@@ -30,10 +32,13 @@ class Menu(BasePage):
             return False
 
     def is_dink(self, parent):  # 是否有子菜单
-        if isinstance(loc_base.menu[parent], dict):
-            return False
-        else:
-            return True
+        try:
+            if isinstance(loc_base.menu[parent], dict):
+                return False
+            else:
+                return True
+        except BaseException as e:
+            print u'is_dink报错：', parent, e
 
     def is_parent_visible(self, parent):  # 父菜单是否可见
         if self.is_dink(parent):
@@ -59,7 +64,7 @@ class Menu(BasePage):
                 print u'打开父菜单失败！', parent, e
 
     def click_son(self, parent, son):
-        info_count_loc = (By.XPATH, "//span[@class='r label label-info pull-right']")
+        info_count_loc = (By.XPATH, "//span[@class='r label label-info pull-right']")  # 待处理记录条数的xpath
         if parent in [u'订单', u'异常及理赔'] and self.is_visible(info_count_loc):
             self.driver.execute_script(self.clear_label_info_js('r label label-info pull-right'))
         if not self.is_visible(loc_base.menu[parent][son]):
