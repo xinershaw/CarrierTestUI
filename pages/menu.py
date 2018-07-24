@@ -23,13 +23,6 @@ class Menu(BasePage):
             "')[i].style.display = 'none';}"
         ]
         self.driver.execute_script(''.join(list_str))
-        # return ''.join(list_str)
-
-    def is_parent(self, menu_name):
-        try:
-            return u'父菜单' in loc_base.menu[menu_name]
-        except KeyError:
-            return False
 
     def is_dink(self, parent):  # 是否有子菜单
         try:
@@ -48,12 +41,11 @@ class Menu(BasePage):
 
     def click_parent(self, parent):
         x_str = "//a[@title='" + parent + "']/.."
-        if self.find_element(*(By.XPATH, x_str)).get_attribute('class') != 'active':
+        if self.find_element(*(By.XPATH, x_str)).get_attribute('class') != 'active':  # 如果已展开则不再点击
             info_count_loc = (By.XPATH, "//span[@class='r label label-info']")
             if parent in [u'订单', u'异常及理赔'] and self.is_visible(info_count_loc):
-                # self.driver.execute_script(self.clear_label_info_js('r label label-info'))
-                self.clear_info_count('r label label-info')
-            if not self.is_parent_visible(parent):
+                self.clear_info_count('r label label-info')  # 清除记录条数，否则无法点击
+            if not self.is_parent_visible(parent):  # 如果不可见，则拉动滚动条到最下面
                 link_obj = self.find_elements(*(By.XPATH, "//*[@id='side-menu']/li"))
                 self.scroll_into_loc(link_obj[-1])
             try:
@@ -67,9 +59,8 @@ class Menu(BasePage):
     def click_son(self, parent, son):
         info_count_loc = (By.XPATH, "//span[@class='r label label-info pull-right']")  # 待处理记录条数的xpath
         if parent in [u'订单', u'异常及理赔'] and self.is_visible(info_count_loc):
-            # self.driver.execute_script(self.clear_label_info_js('r label label-info pull-right'))
-            self.clear_info_count('r label label-info pull-right')
-        if not self.is_visible(loc_base.menu[parent][son]):
+            self.clear_info_count('r label label-info pull-right')  # 清除记录条数，否则无法点击
+        if not self.is_visible(loc_base.menu[parent][son]):  # 如果不可见，则拉动滚动条到最下面
             link_obj = self.find_elements(*(By.XPATH, "//li[@class='active']/ul/li/a"))
             self.scroll_into_loc(link_obj[-1])
         try:
