@@ -7,13 +7,13 @@ Project:新增到货分理页的操作方法
 from pages.base import BasePage
 from pages.menu import Menu
 from pages.element_location import loc_arrive_order as loc
-from pages.element_location import loc_base as loc_base
 from pages import get_data_DB as Db
 import datetime
 import time
 from selenium.webdriver.common.action_chains import ActionChains as Ac
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from pages.area_controller import AreaController as area_cro
 
 
 class ArOrderAdd(BasePage):
@@ -24,6 +24,7 @@ class ArOrderAdd(BasePage):
         # 切换至到货分理frame
         self.to_frame(u'到货分理')
         time.sleep(3)  # 强制等待页面（到货分理列表页）加载，否则新增到货分理按钮无法点击
+        WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(loc.ar_order[u'列表'][u'整体']))
         self.click(loc.ar_order[u'新增'])
         time.sleep(3)  # 强制等待页面（新增到货分理页）加载，否则日期控件无法点击
 
@@ -77,6 +78,9 @@ class ArOrderAdd(BasePage):
         td = self.sort_input_items(u'发货人手机号', u'发货人座机号', u'收货人手机号',u'收货人座机号',
                                    **test_data)
         self.input_items(td.items(), **loc.ar_add_order)
+        area_c = area_cro(self.driver)
+        area_c.input_area(*loc.ar_add_order[u'收货地址'], **test_data[u'收货地址'])  # 录入省市区镇
+        self.send_keys(test_data[u'收货详细地址'], *loc.ar_add_order['input_search'][u'收货详细地址'])
 
     def input_goods_info(self, **test_data):
         td = self.sort_input_items(u'货物名称', u'箱型', u'箱数', u'重量', u'体积', u'货物包装', u'件数',u'车型',
@@ -89,12 +93,25 @@ class ArOrderAdd(BasePage):
         self.input_handing_price(1, test_data[u'装卸费铁'])
         self.input_handing_price(0, test_data[u'装卸费收'])
 
+    def input_end_station(self, **test_data):
+        self.click(loc.ar_add_order[u'到站']['link'])
+        # 找到弹窗再继续
+        print self.is_visible(loc.ar_add_order['input'][u'起码里程'])
+        # WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(loc.ar_add_order[u'到站']['alert']))
+        td = self.sort_input_items(u'起码里程内', u'起码里程外', u'起码里程', u'最低一票', **test_data)
+        self.input_items(td.items(), **loc.ar_add_order)
+
     def save_submit(self, **test_data):  # 保存并提交，且获取录入的运单号
         self.open_page_add()
         order_code = self.input_order_info(**test_data)
         self.input_who_info(**test_data)
         self.input_goods_info(**test_data)
         self.input_other_info(**test_data)
+        # 根据服务方式和送达费，判断是否需要录入“到站”弹窗数据
+        price = self.find_element(*loc.ar_add_order[u'送达费'][u'送货费']).text
+        service_type = self.find_element(*loc.ar_add_order['select'][u'服务方式']).get_attribute('value')  #
+        if service_type == u'3' and price == u'0.00':  # if送货费为0，则需要到弹窗中设置送达费
+            self.input_end_station(**test_data)
         self.click(loc.ar_add_order[u'保存并提交'])
         WebDriverWait(self.driver, 25).until(EC.invisibility_of_element_located(loc.ar_add_order[u'保存并提交']))
         return order_code

@@ -18,7 +18,7 @@ class CaseArOrderAdd(unittest.TestCase):
 
     def test_ar_order_add_smoke(self):  # 新增到货分理-冒烟测试
         page = ar_add.ArOrderAdd(self.driver)
-        order_code = page.save_submit(**td.ar_add_order1)
+        order_code = page.save_submit(**td.ar_add_order2)
         time.sleep(15)  # 保存耗时较长，因此强制等待
         page_list = ar.ArOrder(self.driver)
         # page_list.open_page()

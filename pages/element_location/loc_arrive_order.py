@@ -51,15 +51,21 @@ ar_add_order = {
             u'收货人手机号': (By.ID, 'ReceiverPhone'),
             u'货物包装': (By.ID, 'GoodsPacking'),
             u'件数': (By.ID, 'TotalCount'),
+            u'箱数': (By.ID, 'TotalCount'),
             u'重量': (By.ID, 'TotalWeight'),
             u'体积': (By.ID, 'TotalVolume'),
             u'其他费': (By.ID, 'OtherPrice'),
+            u'起码里程内': (By.ID, 'StartPrice'),
+            u'起码里程外': (By.ID, 'Price'),
+            u'起码里程': (By.ID, 'StartDistance'),
+            u'最低一票': (By.ID, 'LowestAmount'),
     },
     'select': {
             u'运输方式': (By.ID, 'DeliverType'),
             u'服务方式': (By.ID, 'ServiceType'),
             u'支付方式': (By.ID, 'PayType'),
             u'车型': (By.ID, 'GoodsPacking'),
+            u'箱型': (By.ID, 'GoodsPacking'),
     },
     'input_search': {
             u'客户编码': (By.ID, 'UserNumber'),
@@ -72,7 +78,7 @@ ar_add_order = {
                 'input': (By.ID, 'EndPlaceName'),
                 'item': (By.XPATH, "//*[@id='shipperForm1']/div[2]/div/div/ul/table/tbody/tr[1]")
                 },
-            u'收货详细地址': (By.ID, ''),
+            u'收货详细地址': (By.ID, 'RecevierAddress'),
             u'货物名称': {  # 固定格式
                 'input': (By.ID, 'CargoTypeId'),
                 'item': (By.XPATH, "//*[@id='sel']/table/tbody/tr[1]")
@@ -89,5 +95,12 @@ ar_add_order = {
     u'装卸费铁': (By.ID, 'EndReceiverHandingPrice'),
     u'装卸费收': (By.ID, 'HandingPrice'),
     u'保存并提交': (By.ID, 'a-save'),
+    u'到站': {
+        'link': (By.XPATH, "//tr[@id='endstation']/td[1]/a"),
+        'alert': (By.ID, 'layui-layer11'),
+            },
+    u'送达费':{
+        u'送货费': (By.XPATH, "//*[@id='endstation']/td[8]")
+    }
 }
 

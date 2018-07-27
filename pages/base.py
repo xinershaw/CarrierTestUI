@@ -116,7 +116,7 @@ class BasePage(object):
                 continue
         return td
 
-    def input_items(self, *test_data, **locators):  # 批量录入form中的各类字段
+    def input_items(self, test_data, **locators):  # 批量录入form中的各类字段
         """ locators={
                 input:{
                 item1:[value, loc],
@@ -135,14 +135,17 @@ class BasePage(object):
                        .........}
         """
         for t in test_data[0]:
-            if t[0] in locators['input']:
-                self.send_keys(t[1], *locators['input'][t[0]])
-            elif t[0] in locators['select']:
-                self.select_value(t[1], *locators['select'][t[0]])
-            elif t[0] in locators['input_search']:
-                self.input_search(t[1], **locators['input_search'][t[0]])
-            else:
-                continue
+            try:
+                if t[0] in locators['input']:
+                    self.send_keys(t[1], *locators['input'][t[0]])
+                elif t[0] in locators['select']:
+                    self.select_value(t[1], *locators['select'][t[0]])
+                elif t[0] in locators['input_search']:
+                    self.input_search(t[1], **locators['input_search'][t[0]])
+                else:
+                    continue
+            except BaseException as e:
+                print u'录入字段失败！', t[0], e
 
     def scroll_into_loc(self, loc_obj):  # 拖动下拉条至loc的所在位置
         try:
